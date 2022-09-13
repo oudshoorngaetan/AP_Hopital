@@ -141,6 +141,10 @@ public class CommandeDAO extends DAO<Commandes>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    // Donne toutes les commandes de la table commande
+    // Paramètre : Aucun
+    // Retour : 
+    // ArrayList de commandes où on obtient tous les objets commandes de la table commandes
     public  static ArrayList<Commandes> donnerToutesLesCommandes() {
         if (pdo == null) {
             DAO.Connection();
