@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import static ppe2022_pharmacie.DAO.pdo;
 
 public class CommandeDAO extends DAO<Commandes>{
+    // Create
+    // Créer dans la table commande une commande
+    // Paramètre :
+    // Commandes uneCommande : objet Commandes qui est ajouté dans la table
+    // Retour :
+    // true si la commande est ajoutée avec succès
+    // false sinon
     @Override
     public Boolean create(Commandes uneCommande) {
         boolean result = false;
@@ -33,7 +40,13 @@ public class CommandeDAO extends DAO<Commandes>{
         return result;
     }
 
-    //Read
+    // Read
+    // Récupère une commande de la bdd
+    // Paramètre :
+    // int pId : id de la commande qui permet de récupérer les données d'une commande
+    // (toutes les commandes ont un id différents => clé primaire)
+    // Retour :
+    // un objet Commandes (null si aucune commande trouvée)
     @Override
     public Commandes find(int pId) {
         if (pdo == null) {
@@ -57,7 +70,13 @@ public class CommandeDAO extends DAO<Commandes>{
         return uneCommande;
     }
 
-    //Update
+    // Update
+    // Modifie une commande de la bdd
+    // Paramètre :
+    // Commandes uneCommande : objet Commandes qui est modifiée dans la table d'après l'ID
+    // Retour :
+    // true si la commande est modifiée avec succès
+    // false sinon
     @Override
     public Boolean update(Commandes uneCommande) {
         boolean result = false;
@@ -85,7 +104,13 @@ public class CommandeDAO extends DAO<Commandes>{
         return result;
     }
     
-    //Delete
+    // Delete
+    // Supprime une commande de la bdd
+    // Paramètre :
+    // Commandes uneCommande : objet Commandes qui est supprimée selon l'ID
+    // Retour :
+    // true si la commande est supprimée avec succès
+    // false sinon
     @Override
     public Boolean delete(Commandes uneCommande){
         boolean result = false;
@@ -106,8 +131,11 @@ public class CommandeDAO extends DAO<Commandes>{
         return result;
     }
 
-    //FindALL
-
+    // FindALL
+    // Récupère toutes les commandes de la table commandes
+    // Paramètre : Aucun
+    // Retour :
+    // ArrayList de commandes où on obtient tous les objets commandes de la table commandes
     @Override
     public ArrayList<Commandes> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -140,6 +168,11 @@ public class CommandeDAO extends DAO<Commandes>{
         return lesCommandes;
     }
     
+    // Ajoute une commande dans la table commandes
+    // Paramètres :
+    // String fournisseur : Le fournisseur des médicaments à ajouter dans le stock
+    // String medicament  : Le nom du médicament ajouté
+    // int qtte : La quantité de médicaments ajoutée au stock
     public static boolean ajouterCommande(String fournisseur, String medicament, int qtte) {
         if (pdo == null) {
             DAO.Connection();
@@ -166,6 +199,10 @@ public class CommandeDAO extends DAO<Commandes>{
         return true;
     }
     
+    // Récupère tous les fournisseurs de la table fournisseur
+    // Paramètre : Aucun
+    // Retour :
+    // Une ArrayList du nom de chaque fournisseur provenant de la table fournisseur
     public static ArrayList<String> donnerFournisseur() {
         if (pdo == null) {
             DAO.Connection();

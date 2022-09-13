@@ -18,6 +18,9 @@ abstract class DAO<T> {
 
     protected static Connection pdo;
 
+    // Connexion à la BDD postgres
+    // Paramètre : Aucun
+    // Retour : Aucun
     public static void Connection() {
         String url = "jdbc:postgresql://192.168.1.245:5432/PPE2022_Hopital_Pharmacie_BBP";
         String user = "potier";

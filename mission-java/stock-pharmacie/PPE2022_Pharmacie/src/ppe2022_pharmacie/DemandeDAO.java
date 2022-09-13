@@ -17,6 +17,13 @@ import java.util.ArrayList;
  */
 public class DemandeDAO extends DAO<Demande>{
 
+    // Create
+    // Créer dans la table demande une demande de livraison de médicaments
+    // Paramètre :
+    // Demande unObjet: objet Demande qui est ajouté dans la table
+    // Retour :
+    // true si la commande est ajoutée avec succès
+    // false sinon
     @Override
     public Boolean create(Demande unObjet) {
         if (pdo == null) {
@@ -38,6 +45,13 @@ public class DemandeDAO extends DAO<Demande>{
         return Check;
     }
 
+    // Read
+    // Récupère une demande de livraison de la bdd
+    // Paramètre :
+    // int pId : id de la demande qui permet de récupérer les données d'une demande
+    // (toutes les demandes ont un id différents => clé primaire)
+    // Retour :
+    // un objet Demande (null si aucune commande trouvée)
     @Override
     public Demande find(int id) {
         if (pdo == null) {
@@ -67,6 +81,13 @@ public class DemandeDAO extends DAO<Demande>{
         return uneDemande;
     }
 
+    // Update
+    // Modifie une demande de la bdd
+    // Paramètre :
+    // Demande unObjet : objet Demande qui est modifiée dans la table d'après l'IdDemande
+    // Retour :
+    // true si la Demande est modifiée avec succès
+    // false sinon
     @Override
     public Boolean update(Demande unObjet) {
         String requete = "Update demande set idservice=?, idmedicament=?, quantite=? where iddemande=?";
@@ -86,6 +107,13 @@ public class DemandeDAO extends DAO<Demande>{
         return check;
     }
 
+    // Delete
+    // Supprime une demande de la bdd
+    // Paramètre :
+    // Demande unObjet : objet Demande qui est supprimée selon l'IdDemande
+    // Retour :
+    // true si la demande est supprimée avec succès
+    // false sinon
     @Override
     public Boolean delete(Demande unObjet) {
         if (pdo == null) {
@@ -105,6 +133,11 @@ public class DemandeDAO extends DAO<Demande>{
         return check;
     }
 
+    // FindALL
+    // Récupère toutes les demandes de la table demande
+    // Paramètre : Aucun
+    // Retour :
+    // ArrayList de demande où on obtient tous les objets Demande de la table demande
     @Override
     public ArrayList<Demande> findAll() {
         if (pdo == null) {
@@ -133,6 +166,11 @@ public class DemandeDAO extends DAO<Demande>{
         return lesDemandes;
     }
     
+    // Récupère dans une liste toutes les demandes par rapport à un service
+    // Paramètre :
+    // int idService : l'id d'un service dont on veut toutes les demandes
+    // Retour :
+    // ArrayList d'objets Demande d'un service
     public ArrayList<Demande> AfficherDemandeParService(int idService) {
         if (pdo == null) {
             Connection();
