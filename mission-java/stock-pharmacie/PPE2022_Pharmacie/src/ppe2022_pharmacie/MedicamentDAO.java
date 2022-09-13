@@ -7,6 +7,13 @@ import java.util.ArrayList;
 
 public class MedicamentDAO extends DAO<Medicament>{
     
+    
+    /* méthode qui permet de'ajouter un OBJ médicament dans la bdd
+        Paramètres : id, libelle, qtte, seuil, categorie
+    
+    RETURN : true si l'insertion dans la bdd a été correctement effectuée;
+             false si l'insertion dans la bdd n'a pas pu être réalisée.
+    */
     @Override
     public Boolean create(Medicament unMedicament) {
         boolean result = false;
@@ -36,6 +43,12 @@ public class MedicamentDAO extends DAO<Medicament>{
     }
 
     //Read
+    /* méthode qui permet de trouver un OBJ médicament
+        Paramètres : ID du médicament
+        Affichage : libellé, quantité, seuil, catégorie du médicament
+        
+        RETURN : OBJ médicament demandé;
+                 null si rien n'est trouvé */
     @Override
     public Medicament find(int pId) {
         if (pdo == null) {
@@ -61,6 +74,11 @@ public class MedicamentDAO extends DAO<Medicament>{
     }
 
     //Update
+    /* méthode qui met à jour un élément de la bdd
+        Paramètres en saisie de l'OBJ medicament : id, libelle, qtte, seuil, catégorie
+    
+    RETURN : true si la modification dans la bdd a été correctement effectuée;
+             false si la modification dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean update(Medicament unMedicament) {
         boolean result = false;
@@ -90,6 +108,11 @@ public class MedicamentDAO extends DAO<Medicament>{
     }
     
     //Delete
+    /* méthode qui supprime un OBJ médicament dans la bdd
+        Paramètre : ID du médicament
+    
+    RETURN : true si la suppression dans la bdd a été correctement effectuée;
+             false si la suppression dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean delete(Medicament unMedicament){
         boolean result = false;
@@ -111,6 +134,10 @@ public class MedicamentDAO extends DAO<Medicament>{
     }
 
     //FindALL
+    /* méthode qui affiche tous les médicaments dans le stock
+        PARAMETRES : aucun
+        
+        RETURN: une collection des OBJ médicaments en stock */
     @Override
     public ArrayList<Medicament> findAll() {
         if (pdo == null) {
@@ -140,7 +167,10 @@ public class MedicamentDAO extends DAO<Medicament>{
         return lesStocks;
     }
     
-
+    /* méthode qui va afficher un médicament en stock en particulier
+        PARAMETRE : ID du médicament à afficher
+    
+        RETURN : un OBJ médicament (id, libelle, qtte en stock, seuil catégorie */
     public static Medicament donnerUnStock(int idM) {
         if (pdo == null) {
             DAO.Connection();
@@ -171,6 +201,10 @@ public class MedicamentDAO extends DAO<Medicament>{
         return unMedic;
     }
     
+    /* méthode qui va afficher une collection de médicament dont le seuil est supérieur à la quantité
+    PARAMETRES : aucun
+    
+    RETURN: une collection d'OBJ médicament dont la quantité ne dépasse pas le seuil */
     public static ArrayList<Medicament> donnerStockSeuil() {
         if (pdo == null) {
             DAO.Connection();
@@ -199,6 +233,10 @@ public class MedicamentDAO extends DAO<Medicament>{
         return lesStocks;
     }
 
+    /* méthode qui affiche une collection des catégories des médicaments
+    PARAMETRES : aucun
+    
+    RETURN : une collection des catégories distinctes des médicaments */
     public static ArrayList<String> donnerCategorie() {
         if (pdo == null) {
             DAO.Connection();
@@ -225,6 +263,10 @@ public class MedicamentDAO extends DAO<Medicament>{
         return ArrayCategorie;
     }
 
+    /* méthode qui va afficher les médicaments en fonction des catégories 
+    PARAMETRES : catégorie
+    
+    RETURN : une collection de médicaments en fonction de la catégorie */
     public static ArrayList<Medicament> AfficheEnFonctionCategorie(String pCategorie) {
         if (pdo == null) {
             DAO.Connection();
@@ -253,7 +295,11 @@ public class MedicamentDAO extends DAO<Medicament>{
         return lesStocks;
     }
 
-    public static ArrayList<Medicament> listerMedicament(String pMedicament) {
+    /* méthode qui va afficher une liste de médicaments
+    PARAMETRES : aucun
+    
+    RETURN : une collection de médicaments */
+    public static ArrayList<Medicament> listerMedicament() {
         if (pdo == null) {
             DAO.Connection();
         }
@@ -281,6 +327,10 @@ public class MedicamentDAO extends DAO<Medicament>{
         return lesMedicaments;
     }
     
+    /* méthode qui permet d'afficher la quantité d'un médicament
+    PARAMETRE : ID du médicament
+    
+    RETURN: quantité du médicament */
     public static int avoirQtte(int idM) {
         int qtteD = 0;
         if (pdo == null) {
@@ -302,6 +352,8 @@ public class MedicamentDAO extends DAO<Medicament>{
         return qtteD;
     }
     
+    /* méthode 
+    PARAMTRES : qtteD =  ; qtteM = quantité ; idM = id du médicament */
     public static void validerQtte(int qtteD, int qtteM, int idM) {
         int qtteF = qtteM - qtteD;
         if (pdo == null) {

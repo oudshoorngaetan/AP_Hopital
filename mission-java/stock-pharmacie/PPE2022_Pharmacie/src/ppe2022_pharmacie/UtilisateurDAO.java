@@ -15,6 +15,11 @@ import java.util.ArrayList;
  */
 public class UtilisateurDAO extends DAO<Utilisateur> {
 
+    /* méthode qui crée un utilisateur
+    PARAMETRES : OBJ Utilisateur = login, passe, service 
+    
+    RETURN : true si l'insertion a été correctement effectuée;
+             false si l'insertion dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean create(Utilisateur unObjet) {
         boolean estFonctionnel = false;
