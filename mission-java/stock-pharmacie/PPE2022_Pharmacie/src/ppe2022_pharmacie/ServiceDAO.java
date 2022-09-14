@@ -13,12 +13,23 @@ import java.util.ArrayList;
  * @author sio2021
  */
 public class ServiceDAO extends DAO<Service> {
-
+ /* méthode qui crée un service 
+    PARAMETRES : OBJET SERVICE
+    
+    RETURN : true si l'insertion a été correctement effectuée;
+             false si l'opération à échoué + msg erreur.
+    PS : A faire?
+    */
+    
+    
     @Override
     public Boolean create(Service unObjet) {
         throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
     }
-
+ /* méthode qui cherche un service par son id
+    PARAMETRES : id
+    
+    RETURN : renvoie le service associé à l'id*/
     @Override
     public Service find(int id) {
         String requete = "select libelle from service where idservice = " + id;
@@ -37,17 +48,29 @@ public class ServiceDAO extends DAO<Service> {
         }
         return service;
     }
-
+ /* méthode qui update un service
+    PARAMETRES : OBJ service
+    
+    RETURN : true si l'update a été correctement effectuée;
+             false si l'update dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean update(Service unObjet) {
         throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
     }
-
+ /* méthode qui delete un service
+    PARAMETRES : OBJ service
+    
+    RETURN : true si le delete a été correctement effectuée;
+             false si le delete dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean delete(Service unObjet) {
         throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
     }
 
+     /* méthode qui liste tous les services
+    PARAMETRES : aucun
+    
+    RETURN : la collection de tous les services*/
     @Override
     public ArrayList<Service> findAll() {
         ArrayList<Service> lesService = new ArrayList<>();
@@ -66,6 +89,11 @@ public class ServiceDAO extends DAO<Service> {
         }
         return lesService;
     }
+    
+     /* méthode qui récupere l'id d'un service
+    PARAMETRES : OBJ service
+    
+    RETURN : renvoie l'id d'un service*/
     public int getIdService(String libelle) {
         int idService = 0;
         try {
