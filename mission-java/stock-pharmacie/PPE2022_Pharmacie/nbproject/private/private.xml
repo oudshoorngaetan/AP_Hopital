@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/AjouterUtilisateur.java</file>
             <file>file:/E:/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/Authentification.java</file>
+=======
+            <file>file:/C:/Users/olivi/Desktop/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/UtilisateurDAO.java</file>
+>>>>>>> 3a6c9323fd685c1b1ef65ae72d101fe4c41af9f3
         </group>
     </open-files>
 </project-private>

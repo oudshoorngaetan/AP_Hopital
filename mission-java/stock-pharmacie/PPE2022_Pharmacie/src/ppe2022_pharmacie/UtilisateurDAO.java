@@ -44,6 +44,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         throw new UnsupportedOperationException("Not supported."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /* méthode qui met à jour un utilisateur dans la bdd
+    PARAMETRES : OBJ Utilisateur = login, passe, service 
+    
+    RETURN : true si la modification a été correctement effectuée;
+             false si la modification dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean update(Utilisateur unUser) {
         boolean estFonctionnel = false;
@@ -65,6 +70,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
          return estFonctionnel;
     }
 
+    /* méthode qui supprime un utilisateur dans la bdd
+    PARAMETRES : OBJ Utilisateur = login, passe, service 
+    
+    RETURN : true si la suppression a été correctement effectuée;
+             false si la suppression dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean delete(Utilisateur unObjet) {
         boolean estFonctionnel=  false;
@@ -82,6 +92,10 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         return estFonctionnel;
     }
 
+    /* méthode qui affiche les utilisateurs
+    PARAMETRES : aucun
+    
+    RETURN : une collection des utilisateurs */
     @Override
     public ArrayList<Utilisateur> findAll() {
         String requete = "select login, service.libelle, service, idpersonnel, passe from authentification join service on authentification.service = service.idservice";
@@ -105,6 +119,10 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         return lesUsers;
     }
     
+    /* méthode qui affiche un tableau des utilisateurs 
+    PARAMETRES : login, password 
+    
+    RETURN : un tableau de int qui comprend le nombres d'utilisateurs */
     public int[] Authentification(String login, String password) {
         int[] infos = new int[3];
         if (pdo == null) {
@@ -127,6 +145,10 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         return infos;
     }
     
+    /* méthode qui permet d'afficher le mot de passe 
+    PARAMETRE : login
+    
+    RETURN : info = mot de passe de l'utilisateur saisi*/
     public String getHashMdp(String login) {
         String info = "";
         if (pdo == null) {
