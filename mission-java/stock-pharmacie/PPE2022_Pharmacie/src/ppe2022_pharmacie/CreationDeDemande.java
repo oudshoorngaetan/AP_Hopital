@@ -5,12 +5,15 @@
  */
 package ppe2022_pharmacie;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static ppe2022_pharmacie.DAO.pdo;
 
 /**
  *
@@ -33,7 +36,7 @@ public class CreationDeDemande extends javax.swing.JFrame {
         initComponents();
         btnModifier.setVisible(false);
         DefaultComboBoxModel<Medicament> lisModel = new DefaultComboBoxModel<>();
-        
+
         for (Medicament pdt : passerelleMedicament.findAll()) {
             lisModel.addElement(pdt);
         }
@@ -41,7 +44,7 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
         lblService.setText(unUser.getService().getLibelle());
     }
-    
+
     public CreationDeDemande(Utilisateur unUser, Demande uneDemande) {
         idService = unUser.getService().getIdService();
         idDemande = uneDemande.getIdD();
@@ -49,14 +52,14 @@ public class CreationDeDemande extends javax.swing.JFrame {
         initComponents();
         DefaultComboBoxModel<Medicament> lisModel = new DefaultComboBoxModel<>();
         btnV.setVisible(false);
-        
+
         for (Medicament pdt : passerelleMedicament.findAll()) {
             lisModel.addElement(pdt);
         }
         cbxMedicament.setModel(lisModel);
-        
+
         cbxMedicament.setSelectedItem(uneDemande.getMedicament());
-        
+
         txtQtte.setText(String.valueOf(uneDemande.getQtte()));
 
         lblService.setText(uneDemande.getService().getLibelle());
@@ -220,10 +223,30 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
     private void btnVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVMouseClicked
 
-        DefaultListModel listModel = new DefaultListModel();
-        for (Medicament pdt : passerelleMedicament.findAll()) {
-            listModel.addElement(pdt);
+        Medicament med = (Medicament) cbxMedicament.getSelectedItem();
+        int idMed = med.getId();
+        String Sqtte = txtQtte.getText();
+
+        int idServ = idService;
+
+        int qtte = Integer.parseInt(Sqtte);
+        // Rechercher id et ajouter la demande (créer une une méthode create pour DemandeDAO)
+        try {
+            String requete = "SELECT max(id) FROM demande";
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+
+            prepare.setInt(1, idService);
+            ResultSet demandeResultat = prepare.executeQuery();
+            demandeResultat.next();
+            idDemande = demandeResultat.getInt(0) + 1;
+            Demande uneDemande = new Demande(idDemande, idServ, idMed, qtte);
+
+            passerelleDemande.create(uneDemande);
+            JOptionPane.showMessageDialog(null, "Demande créée");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
         }
+
 
     }//GEN-LAST:event_btnVMouseClicked
 
@@ -250,8 +273,10 @@ public class CreationDeDemande extends javax.swing.JFrame {
         int qtte = Integer.parseInt(Sqtte);
 
         Demande uneDemande = new Demande(idDemande, idServ, idMed, qtte);
-        
+
         passerelleDemande.update(uneDemande);
+
+        JOptionPane.showMessageDialog(null, "Demande modifiée");
     }//GEN-LAST:event_btnModifierMouseClicked
 
     /**

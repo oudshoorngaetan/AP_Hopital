@@ -8,8 +8,8 @@ package ppe2022_pharmacie;
 import java.security.MessageDigest;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.xml.bind.DatatypeConverter;
-//import jakarta.xml.bind.DatatypeConverter;
+//import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 /**
  *
@@ -222,9 +222,13 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
         int idService = passerelleService.getIdService(service);
 
         Utilisateur unUser = new Utilisateur(login, new Service(idService,service), 2, hash);
+        if(!login.equals("") && !hash.equals("") && !passe.equals("")){
+            passerelleUser.create(unUser);
+            JOptionPane.showMessageDialog(null, "Utilisateur créé");
+        } else {
+            JOptionPane.showMessageDialog(null, "Login ou Mot de passe vide");
+        }
         
-        passerelleUser.create(unUser);
-        JOptionPane.showMessageDialog(null, "Utilisateur créé");
         dispose(); 
         }catch(Exception e){
             System.out.println(e);

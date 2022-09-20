@@ -23,12 +23,11 @@ public class AfficherDemandes extends javax.swing.JFrame {
     public AfficherDemandes(boolean pharmacien, Utilisateur unUser) {
         this.unUser = unUser;
         this.setResizable(false);
-        
-        
+
         passerelleDemande.Connection();
         initComponents();
         DefaultListModel listModel = new DefaultListModel();
-        
+
         if (!pharmacien) {
             btnValider.setVisible(false);
 
@@ -38,7 +37,8 @@ public class AfficherDemandes extends javax.swing.JFrame {
         } else {
             btnCreerDemande.setVisible(false);
             btnDeconnexion.setVisible(false);
-            
+            btnModifier.setVisible(false);
+
             for (Demande dmd : passerelleDemande.findAll()) {
                 listModel.addElement(dmd);
             }
@@ -242,18 +242,23 @@ public class AfficherDemandes extends javax.swing.JFrame {
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
         int choix = lstDemandes.getSelectedIndex();
         Object val = lstDemandes.getModel().getElementAt(choix);
-        
+
         Demande laDemande = (Demande) val;
-        
+
         new CreationDeDemande(unUser, laDemande).setVisible(true);
     }//GEN-LAST:event_btnModifierMouseClicked
 
     private void btnActualiserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualiserMouseClicked
-        uneDemande = passerelleDemande.findAll();
 
         DefaultListModel listModel = new DefaultListModel();
-        for (Demande dmd : passerelleDemande.findAll()) {
-            listModel.addElement(dmd);
+        if (!unUser.getService().getLibelle().equals("Pharmacien")) {
+            for (Demande dmd : passerelleDemande.AfficherDemandeParService(unUser.getService().getIdService())) {
+                    listModel.addElement(dmd);
+            }
+        } else {
+            for (Demande dmd : passerelleDemande.findAll()) {
+                listModel.addElement(dmd);
+            }
         }
         lstDemandes.setModel(listModel);
     }//GEN-LAST:event_btnActualiserMouseClicked
@@ -296,6 +301,7 @@ public class AfficherDemandes extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 //                new AfficherDemandes().setVisible(true);
+
             }
         });
     }
