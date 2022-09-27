@@ -1,5 +1,7 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Medicament;
+import ppe2022_pharmacie.DAO.CommandeDAO;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
@@ -11,7 +13,7 @@ public class PasserCommande extends javax.swing.JFrame {
 
         this.setResizable(false);
         initComponents();
-        DAO.Connection();
+        CommandeDAO.Connection();
         
         ArrayList<String> ArrayFournisseur = CommandeDAO.donnerFournisseur();
         for (String f : ArrayFournisseur) {

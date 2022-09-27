@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -69,4 +69,10 @@ abstract class DAO<T> {
     
     RETURN : une arraylist d'objet*/
     public abstract ArrayList<T> findAll();
+
+    // Get du pdo pour les classes qui héritent
+    public static Connection getPdo() {
+        return pdo;
+    }
+    
 }

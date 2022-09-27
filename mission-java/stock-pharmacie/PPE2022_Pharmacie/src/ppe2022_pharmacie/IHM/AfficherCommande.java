@@ -1,5 +1,7 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.DAO.CommandeDAO;
+import ppe2022_pharmacie.Commandes;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
@@ -14,7 +16,7 @@ public class AfficherCommande extends javax.swing.JFrame {
         
         this.setResizable(false);
         initComponents();
-        DAO.Connection();
+        CommandeDAO.Connection();
         uneCommande = CommandeDAO.donnerToutesLesCommandes();
         
         DefaultListModel listModel = new DefaultListModel();

@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Utilisateur;
+import ppe2022_pharmacie.DAO.UtilisateurDAO;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;

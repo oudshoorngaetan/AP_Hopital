@@ -1,9 +1,10 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import ppe2022_pharmacie.Demande;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -33,9 +34,10 @@ public class DemandeDAO extends DAO<Demande>{
         try {
             String requete = "insert into demande (idservice, idmedicament, quantite) values (?, ?, ?)";
             PreparedStatement prepare = pdo.prepareStatement(requete);
-            prepare.setInt(1, unObjet.getService().getIdService());
-            prepare.setInt(2, unObjet.getMedicament().getId());
-            prepare.setInt(3, unObjet.getQtte());
+            prepare.setInt(1, unObjet.getIdD());
+            prepare.setInt(2, unObjet.getService().getIdService());
+            prepare.setInt(3, unObjet.getMedicament().getId());
+            prepare.setInt(4, unObjet.getQtte());
             int res = prepare.executeUpdate();
             Check=true;
         } catch (Exception e) {

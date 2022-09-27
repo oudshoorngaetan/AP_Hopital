@@ -1,5 +1,8 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Medicament;
+import ppe2022_pharmacie.Utilisateur;
+import ppe2022_pharmacie.DAO.MedicamentDAO;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;

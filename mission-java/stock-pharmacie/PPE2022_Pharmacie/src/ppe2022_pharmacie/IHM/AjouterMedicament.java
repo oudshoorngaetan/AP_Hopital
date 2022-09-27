@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.IHM;
+
+import ppe2022_pharmacie.DAO.MedicamentDAO;
+import ppe2022_pharmacie.Medicament;
 
 /**
  *
@@ -18,7 +21,7 @@ public class AjouterMedicament extends javax.swing.JFrame {
      */
     public AjouterMedicament() {
         initComponents();
-        DAO.Connection();
+        MedicamentDAO.Connection();
         int intid = MedicamentDAO.derniereid();
         String id = String.valueOf(intid);
         lblIdAfficher.setText(id+ "");

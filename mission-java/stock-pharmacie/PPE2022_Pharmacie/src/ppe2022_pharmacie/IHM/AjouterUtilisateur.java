@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Utilisateur;
+import ppe2022_pharmacie.Service;
+import ppe2022_pharmacie.DAO.ServiceDAO;
+import ppe2022_pharmacie.DAO.UtilisateurDAO;
 import java.security.MessageDigest;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;

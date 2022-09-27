@@ -1,9 +1,10 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import ppe2022_pharmacie.Medicament;
 
 public class MedicamentDAO extends DAO<Medicament>{
     

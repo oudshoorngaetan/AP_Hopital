@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Utilisateur;
+import ppe2022_pharmacie.Medicament;
+import ppe2022_pharmacie.Demande;
+import ppe2022_pharmacie.DAO.MedicamentDAO;
+import ppe2022_pharmacie.DAO.DemandeDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -13,7 +18,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import static ppe2022_pharmacie.DAO.pdo;
 
 /**
  *
@@ -233,7 +237,8 @@ public class CreationDeDemande extends javax.swing.JFrame {
         // Rechercher id et ajouter la demande (créer une une méthode create pour DemandeDAO)
         try {
             String requete = "SELECT max(id) FROM demande";
-            PreparedStatement prepare = pdo.prepareStatement(requete);
+            // GO : DemandeDAO.getPdo() pour récupérer l'attribut pdo de la classe DAO
+            PreparedStatement prepare = DemandeDAO.getPdo().prepareStatement(requete);
 
             prepare.setInt(1, idService);
             ResultSet demandeResultat = prepare.executeQuery();
