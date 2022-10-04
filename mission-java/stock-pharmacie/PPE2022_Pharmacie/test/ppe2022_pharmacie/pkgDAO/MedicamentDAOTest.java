@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package ppe2022_pharmacie.DAO;
+package ppe2022_pharmacie.pkgDAO;
 
-import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import ppe2022_pharmacie.Medicament;
+import ppe2022_pharmacie.metiers.Medicament;
 
 /**
  *
@@ -45,13 +44,20 @@ public class MedicamentDAOTest {
     @Test
     public void testCreate() {
         System.out.println("create");
-        Medicament unMedicament = new Medicament(1, "Bandage", 600, 300, "Matér");
-        MedicamentDAO instance = new MedicamentDAO();
-        Boolean expResult = null;
-        Boolean result = instance.create(unMedicament);
-        assertEquals(expResult, result);
+        //test 1
+        Medicament unMedicament = new Medicament(1, "Bandage", 600, 400, "Matériel Médical");
+        MedicamentDAO test = new MedicamentDAO();
+        Boolean expResult = false; // car la clé existe déjà
+        //Boolean result = test.create(unMedicament);
+        //assertEquals(expResult, result);
+        // test 2
+        Medicament unMedoc = new Medicament(13, "Bandage", 600, 400, "Matériel Médical");
+        MedicamentDAO test2 = new MedicamentDAO();
+        Boolean exp2 = true; // nouveau id
+        //Boolean res = test2.create(unMedoc);
+        //assertEquals(exp2, res);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -60,13 +66,13 @@ public class MedicamentDAOTest {
     @Test
     public void testFind() {
         System.out.println("find");
-        int pId = 0;
+        int pId = 2;
         MedicamentDAO instance = new MedicamentDAO();
         Medicament expResult = null;
         Medicament result = instance.find(pId);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -75,13 +81,13 @@ public class MedicamentDAOTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Medicament unMedicament = null;
+        Medicament unMedicament = new Medicament(4, "Ventoline", 500, 200, "Pneumologie");
         MedicamentDAO instance = new MedicamentDAO();
-        Boolean expResult = null;
+        Boolean expResult = true;
         Boolean result = instance.update(unMedicament);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -90,13 +96,13 @@ public class MedicamentDAOTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
-        Medicament unMedicament = null;
+        Medicament unMedicament = new Medicament(11, "2", 300, 200, "oui");;
         MedicamentDAO instance = new MedicamentDAO();
-        Boolean expResult = null;
+        Boolean expResult = true;
         Boolean result = instance.delete(unMedicament);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -106,11 +112,21 @@ public class MedicamentDAOTest {
     public void testFindAll() {
         System.out.println("findAll");
         MedicamentDAO instance = new MedicamentDAO();
-        ArrayList<Medicament> expResult = null;
+        ArrayList<Medicament> lesMedicaments = new ArrayList<Medicament>();
+        lesMedicaments.add(new Medicament(2, "Xanax", 670, 200, "Psychiatrie"));
+        lesMedicaments.add(new Medicament(3, "Smecta", 1300, 200, "Antalgique"));
+        lesMedicaments.add(new Medicament(4, "Ventoline", 500, 200, "Pneumologie"));
+        lesMedicaments.add(new Medicament(5, "Spasfon", 310, 200, "Antalgique"));
+        lesMedicaments.add(new Medicament(6, "Lisopaïne", 563, 200, "Antalgique"));
+        lesMedicaments.add(new Medicament(7, "Morphine", 316, 200, "Antalgique"));
+        lesMedicaments.add(new Medicament(8, "Codéïne", 284, 200, "Antalgique"));
+        lesMedicaments.add(new Medicament(9, "Tramadol", 311, 400, "Antalgique"));
+        lesMedicaments.add(new Medicament(10, "Compresse", 252, 200, "Matériel Médical"));
+        
         ArrayList<Medicament> result = instance.findAll();
-        assertEquals(expResult, result);
+        assertEquals(lesMedicaments, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -119,12 +135,12 @@ public class MedicamentDAOTest {
     @Test
     public void testDonnerUnStock() {
         System.out.println("donnerUnStock");
-        int idM = 0;
+        int idM = 1;
         Medicament expResult = null;
         Medicament result = MedicamentDAO.donnerUnStock(idM);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -159,10 +175,10 @@ public class MedicamentDAOTest {
     @Test
     public void testAfficheEnFonctionCategorie() {
         System.out.println("AfficheEnFonctionCategorie");
-        String pCategorie = "";
-        ArrayList<Medicament> expResult = null;
+        String pCategorie = "Psychiatrie";
+        ArrayList<Medicament> lesMedoc = new ArrayList<>();
         ArrayList<Medicament> result = MedicamentDAO.AfficheEnFonctionCategorie(pCategorie);
-        assertEquals(expResult, result);
+        assertEquals(lesMedoc, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -186,12 +202,12 @@ public class MedicamentDAOTest {
     @Test
     public void testAvoirQtte() {
         System.out.println("avoirQtte");
-        int idM = 0;
-        int expResult = 0;
+        int idM = 2;
+        int expResult = 670;
         int result = MedicamentDAO.avoirQtte(idM);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -200,12 +216,17 @@ public class MedicamentDAOTest {
     @Test
     public void testValiderQtte() {
         System.out.println("validerQtte");
-        int qtteD = 0;
-        int qtteM = 0;
-        int idM = 0;
+        //Lorsque la qtteD est supérieure à qqteM
+        int qtteD = 800;
+        int qtteM = 600;
+        int idM = 1;
         MedicamentDAO.validerQtte(qtteD, qtteM, idM);
+        //Lorsque la qtteM est supérieure à qtteD
+        int qD = 300;
+        int qM = 600;
+        MedicamentDAO.validerQtte(qD, qtteM, idM);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -214,11 +235,11 @@ public class MedicamentDAOTest {
     @Test
     public void testDerniereid() {
         System.out.println("derniereid");
-        int expResult = 0;
+        int expResult = 13;
         int result = MedicamentDAO.derniereid();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
