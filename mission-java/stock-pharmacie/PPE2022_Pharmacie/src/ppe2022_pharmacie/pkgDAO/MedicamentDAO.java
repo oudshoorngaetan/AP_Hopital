@@ -91,7 +91,7 @@ public class MedicamentDAO extends DAO<Medicament>{
         int qtte = unMedicament.getQtteStock();
         int seuil = unMedicament.getSeuil();
         String categorie = unMedicament.getCategorie();
-        String requete = "Update medicament Set libelle=?,qtte=?,seuil=?,categorie=? Where id=?";
+        String requete = "Update medicament Set libelle=?,qtte=?,seuil=?,categorie=? Where idm=?";
 
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
@@ -121,7 +121,7 @@ public class MedicamentDAO extends DAO<Medicament>{
             Connection();
         }
         int id = unMedicament.getId();
-        String requete = "Delete From medicament where id=?";
+        String requete = "Delete From medicament where idm=?";
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, id);
@@ -354,7 +354,7 @@ public class MedicamentDAO extends DAO<Medicament>{
     }
     
     /* méthode 
-    PARAMTRES : qtteD =  ; qtteM = quantité ; idM = id du médicament */
+    PARAMTRES : qtteD = quantité de la demande ; qtteM = quantité de médicament ; idM = id du médicament */
     public static void validerQtte(int qtteD, int qtteM, int idM) {
         int qtteF = qtteM - qtteD;
         if (pdo == null) {
@@ -370,6 +370,10 @@ public class MedicamentDAO extends DAO<Medicament>{
         }
     }
     
+    /*
+    PARAMETRES: Aucun
+    RETURN: id max dans la bdd
+    */
     public static int derniereid(){
         int id = 0;
         if (pdo == null) {
@@ -380,7 +384,7 @@ public class MedicamentDAO extends DAO<Medicament>{
             String requete1 = "select max(idm) from medicament";
             ResultSet stockResultat = state.executeQuery(requete1);
             while (stockResultat.next()) {
-                id = stockResultat.getInt(1) + 1;
+                id = stockResultat.getInt(1);
             }
         } catch (Exception e) {
             System.out.println(e);
