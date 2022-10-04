@@ -32,7 +32,7 @@ public class DemandeDAO extends DAO<Demande>{
         }
         boolean Check=false;
         try {
-            String requete = "insert into demande (idservice, idmedicament, quantite) values (?, ?, ?)";
+            String requete = "insert into demande (iddemande, idservice, idmedicament, quantite) values (?, ?, ?, ?)";
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, unObjet.getIdD());
             prepare.setInt(2, unObjet.getService().getIdService());

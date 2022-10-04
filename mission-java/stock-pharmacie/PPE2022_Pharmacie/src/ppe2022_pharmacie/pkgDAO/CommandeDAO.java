@@ -54,7 +54,7 @@ public class CommandeDAO extends DAO<Commandes>{
             Connection();
         }
         Commandes uneCommande = null;
-        String requete = "Select libelle,qtte,seuil,categorie From stock Where id=?";
+        String requete = "Select libelle,qtte,seuil,categorie From stock Where idc=?";
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, pId);
@@ -89,7 +89,7 @@ public class CommandeDAO extends DAO<Commandes>{
         String fournisseur = uneCommande.getFournisseur();
         String medicament = uneCommande.getMedicament();
         int qtte = uneCommande.getQtte();
-        String requete = "Update commandes Set fournisseur=?,medicament=?,qtte=? Where id=?";
+        String requete = "Update commandes Set fournisseur=?,medicament=?,qtte=? Where idc=?";
 
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
@@ -119,7 +119,7 @@ public class CommandeDAO extends DAO<Commandes>{
             Connection();
         }
         int id = uneCommande.getIdc();
-        String requete = "Delete From commandes where id=?";
+        String requete = "Delete From commandes where idc=?";
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, id);
@@ -139,6 +139,7 @@ public class CommandeDAO extends DAO<Commandes>{
     // ArrayList de commandes où on obtient tous les objets commandes de la table commandes
     @Override
     public ArrayList<Commandes> findAll() {
+        // meme chose que la methodes donnerToutesLesCommades()
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
