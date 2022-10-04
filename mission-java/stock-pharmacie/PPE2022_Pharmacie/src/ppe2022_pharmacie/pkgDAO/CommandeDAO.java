@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import ppe2022_pharmacie.Commandes;
+import ppe2022_pharmacie.metiers.Commandes;
 import static ppe2022_pharmacie.pkgDAO.DAO.pdo;
 
 public class CommandeDAO extends DAO<Commandes>{

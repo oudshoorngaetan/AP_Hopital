@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import ppe2022_pharmacie.Demande;
+import ppe2022_pharmacie.metiers.Demande;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

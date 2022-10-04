@@ -7,7 +7,7 @@ package ppe2022_pharmacie.pkgDAO;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import ppe2022_pharmacie.Service;
+import ppe2022_pharmacie.metiers.Service;
 
 /**
  *

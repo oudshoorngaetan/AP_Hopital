@@ -1,7 +1,7 @@
 package ppe2022_pharmacie.IHM;
 
 import ppe2022_pharmacie.pkgDAO.CommandeDAO;
-import ppe2022_pharmacie.Commandes;
+import ppe2022_pharmacie.metiers.Commandes;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;

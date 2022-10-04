@@ -1,4 +1,4 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.metiers;
 
 import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
 import ppe2022_pharmacie.pkgDAO.ServiceDAO;
