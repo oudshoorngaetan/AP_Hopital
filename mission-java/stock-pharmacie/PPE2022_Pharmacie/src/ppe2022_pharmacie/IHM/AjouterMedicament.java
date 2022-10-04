@@ -5,7 +5,7 @@
  */
 package ppe2022_pharmacie.IHM;
 
-import ppe2022_pharmacie.DAO.MedicamentDAO;
+import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
 import ppe2022_pharmacie.Medicament;
 
 /**

@@ -1,7 +1,7 @@
 package ppe2022_pharmacie;
 
-import ppe2022_pharmacie.DAO.MedicamentDAO;
-import ppe2022_pharmacie.DAO.ServiceDAO;
+import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
+import ppe2022_pharmacie.pkgDAO.ServiceDAO;
 
 /**
  *

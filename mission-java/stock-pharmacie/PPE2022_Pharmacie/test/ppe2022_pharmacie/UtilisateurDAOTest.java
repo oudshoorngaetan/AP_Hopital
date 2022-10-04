@@ -4,7 +4,7 @@
  */
 package ppe2022_pharmacie;
 
-import ppe2022_pharmacie.DAO.UtilisateurDAO;
+import ppe2022_pharmacie.pkgDAO.UtilisateurDAO;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;

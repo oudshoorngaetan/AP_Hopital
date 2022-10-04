@@ -1,4 +1,4 @@
-package ppe2022_pharmacie.DAO;
+package ppe2022_pharmacie.pkgDAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

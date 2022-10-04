@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ppe2022_pharmacie.DAO;
+package ppe2022_pharmacie.pkgDAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

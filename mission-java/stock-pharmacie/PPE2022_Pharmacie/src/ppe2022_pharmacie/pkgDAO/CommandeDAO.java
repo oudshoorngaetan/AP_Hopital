@@ -1,11 +1,11 @@
-package ppe2022_pharmacie.DAO;
+package ppe2022_pharmacie.pkgDAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import ppe2022_pharmacie.Commandes;
-import static ppe2022_pharmacie.DAO.DAO.pdo;
+import static ppe2022_pharmacie.pkgDAO.DAO.pdo;
 
 public class CommandeDAO extends DAO<Commandes>{
     // Create

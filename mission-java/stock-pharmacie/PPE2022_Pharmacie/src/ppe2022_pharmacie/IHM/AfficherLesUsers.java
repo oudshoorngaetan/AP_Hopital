@@ -5,7 +5,7 @@
 package ppe2022_pharmacie.IHM;
 
 import ppe2022_pharmacie.Utilisateur;
-import ppe2022_pharmacie.DAO.UtilisateurDAO;
+import ppe2022_pharmacie.pkgDAO.UtilisateurDAO;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
