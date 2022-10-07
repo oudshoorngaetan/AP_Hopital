@@ -132,7 +132,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         }
         try {
             Statement state = pdo.createStatement();
-            String requete = "Select count(*), service, idpersonnel from authentification where login ='" + login + "' and passe='" + password + "' group by service, idpersonnel";
+            String requete = "Select count(idpersonnel), service, idpersonnel from authentification where login ='" + login + "' and passe='" + password + "' group by service, idpersonnel";
             ResultSet authResultat = state.executeQuery(requete);
             if (authResultat.next()) {
                 infos[0] = authResultat.getInt(1);
