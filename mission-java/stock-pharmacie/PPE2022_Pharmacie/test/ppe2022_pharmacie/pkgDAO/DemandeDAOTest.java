@@ -59,13 +59,13 @@ public class DemandeDAOTest {
     @Test
     public void testFind() {
         System.out.println("find");
-        int id = 0;
+        int id = 1;
         DemandeDAO instance = new DemandeDAO();
-        Demande expResult = null;
+        Demande expResult = new Demande(1,3,6,11);
         Demande result = instance.find(id);
-        assertEquals(expResult, result);
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -105,11 +105,13 @@ public class DemandeDAOTest {
     public void testFindAll() {
         System.out.println("findAll");
         DemandeDAO instance = new DemandeDAO();
-        ArrayList<Demande> expResult = null;
+        ArrayList<Demande> expResult = new ArrayList<>();
+        expResult.add(new Demande(2,2,5,50));
+        expResult.add(new Demande(1,3,6,11));
         ArrayList<Demande> result = instance.findAll();
-        assertEquals(expResult, result);
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -121,7 +123,8 @@ public class DemandeDAOTest {
         int idService = 5;
         DemandeDAO instance = new DemandeDAO();
         ArrayList<Demande> expResult = new ArrayList<>();
-        expResult.add(new Demande(12,5,8,20));
+        expResult.add(new Demande(2,5,5,50));
+        expResult.add(new Demande(1,3,6,11));
         ArrayList<Demande> result = instance.AfficherDemandeParService(idService);
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
         // TODO review the generated test code and remove the default call to fail.

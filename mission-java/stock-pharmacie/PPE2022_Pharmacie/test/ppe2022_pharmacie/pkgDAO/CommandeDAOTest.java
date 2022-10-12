@@ -5,6 +5,7 @@
 package ppe2022_pharmacie.pkgDAO;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,13 +60,13 @@ public class CommandeDAOTest {
     @Test
     public void testFind() {
         System.out.println("find");
-        int pId = 9000;
+        int pId = 1;
         CommandeDAO instance = new CommandeDAO();
-        Commandes expResult = null;
+        Commandes expResult = new Commandes(1,"Hauser","Spasfon",50);
         Commandes result = instance.find(pId);
-        assertEquals(expResult, result);
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -74,7 +75,7 @@ public class CommandeDAOTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Commandes uneCommande = new Commandes(9000,"Hauser","Compresse",100);
+        Commandes uneCommande = new Commandes(9,"Hauser","Compresse",100);
         CommandeDAO instance = new CommandeDAO();
         Boolean expResult = true;
         Boolean result = instance.update(uneCommande);
@@ -101,16 +102,27 @@ public class CommandeDAOTest {
     /**
      * Test of findAll method, of class CommandeDAO.
      */
+    
+    /*
     @Test
     public void testFindAll() {
         System.out.println("findAll");
         CommandeDAO instance = new CommandeDAO();
-        ArrayList<Commandes> expResult = null;
+        ArrayList<Commandes> expResult = new ArrayList<>();
+        expResult.add(new Commandes(1,"Hauser","Spasfon",50));
+        expResult.add(new Commandes(2,"Seppic","Ventoline",100));
+        expResult.add(new Commandes(3,"ACS Phyto","Spasfon",40));
+        expResult.add(new Commandes(4,"Endress","Compresse",8));
+        expResult.add(new Commandes(5,"Zwiebel","Codéïne",24));
+        expResult.add(new Commandes(6,"Seppic","Tramadol",4));
+        expResult.add(new Commandes(7,"Horizane Sante","Codéïne",600));
+        expResult.add(new Commandes(8,"Hauser","Ventoline",12));
         ArrayList<Commandes> result = instance.findAll();
-        assertEquals(expResult, result);
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
+    */
 
     /**
      * Test of donnerToutesLesCommandes method, of class CommandeDAO.
@@ -118,9 +130,18 @@ public class CommandeDAOTest {
     @Test
     public void testDonnerToutesLesCommandes() {
         System.out.println("donnerToutesLesCommandes");
-        ArrayList<Commandes> expResult = null;
-        ArrayList<Commandes> result = CommandeDAO.donnerToutesLesCommandes();
-        assertEquals(expResult, result);
+        CommandeDAO instance = new CommandeDAO();
+        ArrayList<Commandes> expResult = new ArrayList<>();
+        expResult.add(new Commandes(1,"Hauser","Spasfon",50));
+        expResult.add(new Commandes(2,"Seppic","Ventoline",100));
+        expResult.add(new Commandes(3,"ACS Phyto","Spasfon",40));
+        expResult.add(new Commandes(4,"Endress","Compresse",8));
+        expResult.add(new Commandes(5,"Zwiebel","Codéïne",24));
+        expResult.add(new Commandes(6,"Seppic","Tramadol",4));
+        expResult.add(new Commandes(7,"Horizane Sante","Codéïne",600));
+        expResult.add(new Commandes(8,"Hauser","Ventoline",12));
+        ArrayList<Commandes> result = instance.donnerToutesLesCommandes();
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -147,9 +168,19 @@ public class CommandeDAOTest {
     @Test
     public void testDonnerFournisseur() {
         System.out.println("donnerFournisseur");
-        ArrayList<String> expResult = null;
+        ArrayList<String> expResult = new ArrayList<>();
+        expResult.add("Horizane Sante");
+        expResult.add("Endress");
+        expResult.add("Hauser");
+        expResult.add("ACS Phyto");
+        expResult.add("Zwiebel");
+        expResult.add("Seppic");
+        expResult.add("Lavollee");
+        expResult.add("Caquant");
         ArrayList<String> result = CommandeDAO.donnerFournisseur();
-        assertEquals(expResult, result);
+        Collections.sort(result);
+        Collections.sort(expResult);
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
