@@ -33,6 +33,9 @@ public class ServiceDAO extends DAO<Service> {
     RETURN : renvoie le service associé à l'id*/
     @Override
     public Service find(int id) {
+         if (pdo == null) {
+            Connection();
+        }
         String requete = "select libelle from service where idservice = " + id;
         Service service = null;
         String libelleService;
@@ -74,6 +77,9 @@ public class ServiceDAO extends DAO<Service> {
     RETURN : la collection de tous les services*/
     @Override
     public ArrayList<Service> findAll() {
+         if (pdo == null) {
+            Connection();
+        }
         ArrayList<Service> lesService = new ArrayList<>();
         String requete = "select * from service";
         try {
@@ -96,6 +102,9 @@ public class ServiceDAO extends DAO<Service> {
     
     RETURN : renvoie l'id d'un service*/
     public int getIdService(String libelle) {
+         if (pdo == null) {
+            Connection();
+        }
         int idService = 0;
         try {
             Statement state = pdo.createStatement();

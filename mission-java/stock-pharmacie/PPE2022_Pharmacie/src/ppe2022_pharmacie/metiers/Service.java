@@ -10,6 +10,14 @@ package ppe2022_pharmacie.metiers;
  * @author hbana
  */
 public class Service {
+
+    public void setIdService(int idService) {
+        this.idService = idService;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
     private int idService;
     private String libelle;
 

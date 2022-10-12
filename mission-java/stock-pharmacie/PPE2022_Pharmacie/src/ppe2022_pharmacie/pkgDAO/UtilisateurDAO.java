@@ -100,6 +100,9 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
     RETURN : une collection des utilisateurs */
     @Override
     public ArrayList<Utilisateur> findAll() {
+          if (pdo == null) {
+            Connection();
+        }
         String requete = "select login, service.libelle, service, idpersonnel, passe from authentification join service on authentification.service = service.idservice";
         ArrayList<Utilisateur> lesUsers = new ArrayList<>();
         try {

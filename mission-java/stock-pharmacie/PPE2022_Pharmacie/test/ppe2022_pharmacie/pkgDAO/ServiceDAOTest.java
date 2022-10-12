@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import ppe2022_pharmacie.metiers.Medicament;
 import ppe2022_pharmacie.metiers.Service;
 
 /**
@@ -19,22 +20,22 @@ import ppe2022_pharmacie.metiers.Service;
  * @author julie
  */
 public class ServiceDAOTest {
-    
+
     public ServiceDAOTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -62,12 +63,12 @@ public class ServiceDAOTest {
         System.out.println("find");
         int id = 1;
         ServiceDAO instance = new ServiceDAO();
-        Service expResult = new Service(1,"Administration");
-        
+        Service expResult = new Service(1, "Administration");
+
         Service result = instance.find(id);
         assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -106,12 +107,18 @@ public class ServiceDAOTest {
     @Test
     public void testFindAll() {
         System.out.println("findAll");
+
         ServiceDAO instance = new ServiceDAO();
-        ArrayList<Service> expResult = null;
+        ArrayList<Service> expResult = new ArrayList<>();
+        expResult.add(new Service(1, "Administration"));
+        expResult.add(new Service(2, "Phamarcien"));    
+        expResult.add(new Service(4, "radiologie"));
+        expResult.add(new Service(5, "médécine générale"));
+        expResult.add(new Service(3, "chirurgie"));
         ArrayList<Service> result = instance.findAll();
-        assertEquals(expResult, result);
+        assertEquals(expResult.get(0).toString(), result.get(0).toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+     //   fail("The test case is a prototype.");
     }
 
     /**
@@ -120,13 +127,13 @@ public class ServiceDAOTest {
     @Test
     public void testGetIdService() {
         System.out.println("getIdService");
-        String libelle = "";
+        String libelle = "radiologie";
         ServiceDAO instance = new ServiceDAO();
-        int expResult = 0;
+        int expResult = 4;
         int result = instance.getIdService(libelle);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
-    
+
 }

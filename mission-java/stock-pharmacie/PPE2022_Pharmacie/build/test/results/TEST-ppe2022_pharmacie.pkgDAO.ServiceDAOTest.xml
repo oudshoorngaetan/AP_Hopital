@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="1" hostname="DESKTOP-K459FBH" name="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" skipped="0" tests="13" time="0.485" timestamp="2022-10-12T15:28:41">
+<testsuite errors="3" failures="0" hostname="DESKTOP-K459FBH" name="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" skipped="0" tests="6" time="0.525" timestamp="2022-10-12T15:47:56">
   <properties>
     <property name="" value="======" />
     <property name="libs.spring-framework300.classpath" value="C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\platform\modules\org-apache-commons-logging.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\cglib-2.2.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-aop-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-aspects-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-beans-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-context-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-context-support-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-core-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-expression-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-instrument-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-instrument-tomcat-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-jdbc-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-jms-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-orm-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-oxm-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-struts-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-test-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-tx-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-web-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-webmvc-3.2.18.RELEASE.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\java\modules\ext\spring-3.0\spring-webmvc-portlet-3.2.18.RELEASE.jar" />
@@ -19,7 +19,7 @@
     <property name="libs.jsp-compilation.src" value="" />
     <property name="libs.JWSAntTasks.javadoc" value="" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-16.0.2\bin" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ppe2022_pharmacie.pkgDAO.MedicamentDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\test\results\TEST-ppe2022_pharmacie.pkgDAO.MedicamentDAOTest.xml crashfile=C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junitvmwatcher17987950057455960632.properties propsfile=C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junit16040512690182157593.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ppe2022_pharmacie.pkgDAO.ServiceDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\test\results\TEST-ppe2022_pharmacie.pkgDAO.ServiceDAOTest.xml crashfile=C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junitvmwatcher5113018299386714473.properties propsfile=C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junit12627000292876532999.properties" />
     <property name="jdk.debug" value="release" />
     <property name="libs.spring-framework300.src" value="" />
     <property name="javadoc.use" value="true" />
@@ -63,7 +63,7 @@
     <property name="libs.testng.maven-pom" value="" />
     <property name="jlink.additionalparam" value="" />
     <property name="org.openide.version" value="deprecated" />
-    <property name="test.includes" value="ppe2022_pharmacie/pkgDAO/MedicamentDAOTest.java" />
+    <property name="test.includes" value="ppe2022_pharmacie/pkgDAO/ServiceDAOTest.java" />
     <property name="run.classpath" value="C:\Users\sio2021\Downloads\postgresql-42.2.18.jar:d:\Users\Admin\Downloads\postgresql-42.2.18.jar:postgresql-42.2.18.jar:C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\jakarta.jakartaee-api-9.0.0.jar:C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\platform\modules\ext\junit-4.13.1.jar:C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\platform\modules\ext\hamcrest-core-1.3.jar:build/classes" />
     <property name="libs.jaxb.src" value="" />
     <property name="test.src.dir" value="test" />
@@ -201,7 +201,7 @@
     <property name="libs.jsp-compilation-syscp.classpath" value="C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\extide\ant\lib\ant.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\jstl-impl.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar" />
     <property name="libs.jsp-compilation.classpath" value="C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\extide\ant\lib\ant.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\jstl-api.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\extide\ant\lib\ant-launcher.jar" />
     <property name="libs.javaee-api-6.0.classpath" value="C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\javaee-api-6.0.jar" />
-    <property name="javac.includesfile.binary" value="C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\null1653832046" />
+    <property name="javac.includesfile.binary" value="C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\null764265535" />
     <property name="libs.javaee-api-7.0.classpath" value="C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\javaee-api-7.0.jar" />
     <property name="sun.cpu.isalist" value="amd64" />
     <property name="libs.restapi.maven-pom" value="" />
@@ -319,7 +319,7 @@
     <property name="netbeans.autoupdate.version" value="1.23" />
     <property name="empty.dir" value="C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\empty" />
     <property name="netbeans.user" value="C:\Users\julie\AppData\Roaming\NetBeans\12.4" />
-    <property name="javac.includes.binary" value="C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\test\classes\ppe2022_pharmacie\pkgDAO\MedicamentDAOTest.class" />
+    <property name="javac.includes.binary" value="C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\test\classes\ppe2022_pharmacie\pkgDAO\ServiceDAOTest.class" />
     <property name="file.separator" value="\" />
     <property name="line.separator" value="&#xd;&#xa;" />
     <property name="javadoc.additionalparam" value="" />
@@ -356,7 +356,7 @@
     <property name="libs.spring-framework500.src" value="" />
     <property name="libs.javaee-api-6.0.src" value="" />
     <property name="user.properties.file" value="C:\Users\julie\AppData\Roaming\NetBeans\12.4\build.properties" />
-    <property name="javac.includes" value="ppe2022_pharmacie/pkgDAO/MedicamentDAOTest.java" />
+    <property name="javac.includes" value="ppe2022_pharmacie/pkgDAO/ServiceDAOTest.java" />
     <property name="netbeans.autoupdate.country" value="FR" />
     <property name="java.class.path" value="C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\postgresql-42.2.18.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\jakarta.jakartaee-api-9.0.0.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\platform\modules\ext\junit-4.13.1.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\platform\modules\ext\hamcrest-core-1.3.jar;C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\classes;C:\Users\julie\Desktop\AP_hopital\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\test\classes;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\extide\ant\lib\ant-launcher.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\extide\ant\lib\ant.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\extide\ant\lib\ant-junit.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\extide\ant\lib\ant-junit4.jar" />
     <property name="libs.javaee-web-api-6.0.maven-pom" value="" />
@@ -414,7 +414,7 @@
     <property name="java.vm.version" value="16.0.2+7-67" />
     <property name="libs.metro.javadoc" value="C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\docs\webservices-api-javadoc.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\docs\webservices-extra-javadoc.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\docs\webservices-extra-api-javadoc.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\docs\webservices-rt-javadoc.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\docs\webservices-tools-javadoc.jar" />
     <property name="libs.jakartaee-web-api-9.0.src" value="" />
-    <property name="test.class" value="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" />
+    <property name="test.class" value="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" />
     <property name="sun.awt.datatransfer.timeout" value="1000" />
     <property name="libs.javaee-web-api-7.0.src" value="" />
     <property name="annotation.processing.run.all.processors" value="true" />
@@ -423,40 +423,43 @@
     <property name="junit.forkmode" value="perTest" />
     <property name="libs.javaee-endorsed-api-6.0.classpath" value="C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\javaee6-endorsed\javax.annotation.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\javaee6-endorsed\jaxb-api-osgi.jar;C:\Users\julie\Downloads\netbeans-12.4-bin\netbeans\enterprise\modules\ext\javaee6-endorsed\webservices-api-osgi.jar" />
   </properties>
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testValiderQtte" time="0.356" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testAfficheEnFonctionCategorie" time="0.007" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testListerMedicament" time="0.001" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testFindAll" time="0.001" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testFind" time="0.005" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testAvoirQtte" time="0.001" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testDonnerUnStock" time="0.002" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testDonnerCategorie" time="0.001" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testCreate" time="0.0" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testDelete" time="0.001" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testDonnerStockSeuil" time="0.001" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testUpdate" time="0.002" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.MedicamentDAOTest" name="testDerniereid" time="0.006">
-    <failure message="expected:&lt;12&gt; but was:&lt;10&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;12&gt; but was:&lt;10&gt;
-	at ppe2022_pharmacie.pkgDAO.MedicamentDAOTest.testDerniereid(MedicamentDAOTest.java:264)
+  <testcase classname="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" name="testFindAll" time="0.417" />
+  <testcase classname="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" name="testFind" time="0.001" />
+  <testcase classname="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" name="testCreate" time="0.004">
+    <error message="Not supported" type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: Not supported
+	at ppe2022_pharmacie.pkgDAO.ServiceDAO.create(ServiceDAO.java:28)
+	at ppe2022_pharmacie.pkgDAO.ServiceDAOTest.testCreate(ServiceDAOTest.java:52)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-</failure>
+</error>
   </testcase>
-  <system-out><![CDATA[validerQtte
+  <testcase classname="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" name="testDelete" time="0.0">
+    <error message="Not supported" type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: Not supported
+	at ppe2022_pharmacie.pkgDAO.ServiceDAO.delete(ServiceDAO.java:71)
+	at ppe2022_pharmacie.pkgDAO.ServiceDAOTest.testDelete(ServiceDAOTest.java:98)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" name="testUpdate" time="0.001">
+    <error message="Not supported" type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: Not supported
+	at ppe2022_pharmacie.pkgDAO.ServiceDAO.update(ServiceDAO.java:62)
+	at ppe2022_pharmacie.pkgDAO.ServiceDAOTest.testUpdate(ServiceDAOTest.java:83)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="ppe2022_pharmacie.pkgDAO.ServiceDAOTest" name="testGetIdService" time="0.001" />
+  <system-out><![CDATA[findAll
 Connexion effective !
-AfficheEnFonctionCategorie
-listerMedicament
-findAll
 find
-avoirQtte
-donnerUnStock
-donnerCategorie
 create
 delete
-donnerStockSeuil
 update
-derniereid
+getIdService
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
