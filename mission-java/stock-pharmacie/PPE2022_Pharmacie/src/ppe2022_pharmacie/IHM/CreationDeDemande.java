@@ -10,6 +10,7 @@ import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
 import ppe2022_pharmacie.pkgDAO.DemandeDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -205,10 +206,25 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
         int qtte = Integer.parseInt(Sqtte);
 
-        Demande uneDemande = new Demande(12, idServ, idMed, qtte);
+        Demande uneDemande = null;
+        // GO : Création d'une requête pour récupérer le dernier ID et faire +1 pour la création (pas d'id en double)
+        try {
+            String requete = "SELECT max(iddemande) FROM demande";
+            // GO : DemandeDAO.getPdo() pour récupérer l'attribut pdo de la classe DAO
+            Statement stmt = DemandeDAO.getPdo().createStatement();
+            ResultSet demandeResultat = stmt.executeQuery(requete);
+            if (demandeResultat.next()) {
+                idDemande = demandeResultat.getInt(1) + 1;
+                uneDemande = new Demande(idDemande, idServ, idMed, qtte);
 
-        passerelleDemande.create(uneDemande);
-        JOptionPane.showMessageDialog(null, "Demande créée");
+                passerelleDemande.create(uneDemande);
+                JOptionPane.showMessageDialog(null, "Demande créée");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
+        }
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnulerActionPerformed
@@ -225,7 +241,7 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
     private void btnVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVMouseClicked
 
-        Medicament med = (Medicament) cbxMedicament.getSelectedItem();
+        /*Medicament med = (Medicament) cbxMedicament.getSelectedItem();
         int idMed = med.getId();
         String Sqtte = txtQtte.getText();
 
@@ -247,8 +263,9 @@ public class CreationDeDemande extends javax.swing.JFrame {
             passerelleDemande.create(uneDemande);
             JOptionPane.showMessageDialog(null, "Demande créée");
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Prout");
             JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
-        }
+        }*/
 
 
     }//GEN-LAST:event_btnVMouseClicked
