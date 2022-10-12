@@ -54,7 +54,7 @@ public class CommandeDAO extends DAO<Commandes>{
             Connection();
         }
         Commandes uneCommande = null;
-        String requete = "Select libelle,qtte,seuil,categorie From stock Where idc=?";
+        String requete = "Select fournisseur,medicament,qtte From commandes Where idc=?";
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, pId);
@@ -149,7 +149,7 @@ public class CommandeDAO extends DAO<Commandes>{
     // ArrayList de commandes où on obtient tous les objets commandes de la table commandes
     public  static ArrayList<Commandes> donnerToutesLesCommandes() {
         if (pdo == null) {
-            DAO.Connection();
+            Connection();
         }
         ArrayList<Commandes> lesCommandes = new ArrayList<Commandes>();
         try {
@@ -180,6 +180,7 @@ public class CommandeDAO extends DAO<Commandes>{
     // String medicament  : Le nom du médicament ajouté
     // int qtte : La quantité de médicaments ajoutée au stock
     public static boolean ajouterCommande(String fournisseur, String medicament, int qtte) {
+        boolean result = false;
         if (pdo == null) {
             DAO.Connection();
         }
@@ -196,13 +197,13 @@ public class CommandeDAO extends DAO<Commandes>{
                 prepare.setString(3, medicament);
                 prepare.setInt(4, qtte);
                 prepare.executeUpdate();
-                return false;
+                result = true;
             }
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Erreur dans l'ajout de la commande");
         }
-        return true;
+        return result;
     }
     
     // Récupère tous les fournisseurs de la table fournisseur
