@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="DESKTOP-O5RG5AI" name="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" skipped="0" tests="6" time="0.475" timestamp="2022-10-12T15:46:09">
+<testsuite errors="0" failures="1" hostname="DESKTOP-O5RG5AI" name="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" skipped="0" tests="6" time="0.473" timestamp="2022-10-15T12:01:38">
   <properties>
     <property name="netbeans.autoupdate.country" value="FR" />
     <property name="javac.test.classpath" value="C:\Users\sio2021\Downloads\postgresql-42.2.18.jar:d:\Users\Admin\Downloads\postgresql-42.2.18.jar:postgresql-42.2.18.jar:${libs.jakartaee-api-9.0.classpath}:C:\Program Files\NetBeans 8.2\platform\modules\ext\junit-4.12.jar:C:\Program Files\NetBeans 8.2\platform\modules\ext\hamcrest-core-1.3.jar:build/classes" />
@@ -44,7 +44,7 @@
     <property name="user.name" value="Gatch" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ppe2022_pharmacie.pkgDAO.DemandeDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\test\results\TEST-ppe2022_pharmacie.pkgDAO.DemandeDAOTest.xml crashfile=C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junitvmwatcher896278197721940338.properties propsfile=C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junit8194949788671519752.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ppe2022_pharmacie.pkgDAO.DemandeDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\test\results\TEST-ppe2022_pharmacie.pkgDAO.DemandeDAOTest.xml crashfile=C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junitvmwatcher7836924063818503655.properties propsfile=C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\build\junit856151287985210052.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -81,7 +81,7 @@
     <property name="javac.debug" value="true" />
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="\" />
-    <property name="javac.includesfile.binary" value="C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\null1410464371" />
+    <property name="javac.includesfile.binary" value="C:\Users\Gatch\Documents\NetBeansProjects\AP_Hopital\mission-java\stock-pharmacie\PPE2022_Pharmacie\null2050171681" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="javac.test.processorpath" value="C:\Users\sio2021\Downloads\postgresql-42.2.18.jar:d:\Users\Admin\Downloads\postgresql-42.2.18.jar:postgresql-42.2.18.jar:${libs.jakartaee-api-9.0.classpath}:C:\Program Files\NetBeans 8.2\platform\modules\ext\junit-4.12.jar:C:\Program Files\NetBeans 8.2\platform\modules\ext\hamcrest-core-1.3.jar:build/classes" />
@@ -339,23 +339,17 @@
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
     <property name="" value="======" />
   </properties>
-  <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testFindAll" time="0.42">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at ppe2022_pharmacie.metiers.Demande.toString(Demande.java:62)
-	at java.lang.String.valueOf(String.java:2994)
-	at java.lang.StringBuilder.append(StringBuilder.java:131)
-	at java.util.AbstractCollection.toString(AbstractCollection.java:462)
+  <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testFindAll" time="0.418">
+    <failure message="expected:&lt;...de{idD=2, service = [Pharmacien], medicament= Spasfo...&gt; but was:&lt;...de{idD=2, service = [chirurgie], medicament= Spasfo...&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;...de{idD=2, service = [Pharmacien], medicament= Spasfo...&gt; but was:&lt;...de{idD=2, service = [chirurgie], medicament= Spasfo...&gt;
 	at ppe2022_pharmacie.pkgDAO.DemandeDAOTest.testFindAll(DemandeDAOTest.java:112)
-</error>
+</failure>
   </testcase>
   <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testFind" time="0.002" />
   <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testAfficherDemandeParService" time="0.002" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testCreate" time="0.002" />
-  <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testDelete" time="0.002" />
+  <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testCreate" time="0.0" />
+  <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testDelete" time="0.001" />
   <testcase classname="ppe2022_pharmacie.pkgDAO.DemandeDAOTest" name="testUpdate" time="0.002" />
   <system-out><![CDATA[findAll
-java.lang.NullPointerException
-Erreur dans la récupération du service
 Connexion effective !
 find
 AfficherDemandeParService

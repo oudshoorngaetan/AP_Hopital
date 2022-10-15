@@ -62,7 +62,7 @@ public class DemandeDAO extends DAO<Demande>{
         Demande uneDemande=null;
         try {
             Statement state = pdo.createStatement();
-            String requete = "SELECT * FROM demande where iddemande=?";
+            String requete = "SELECT iddemande, idservice, idmedicament, quantite FROM demande where iddemande=?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, id);
             ResultSet userResultat = prepare.executeQuery();
@@ -148,7 +148,7 @@ public class DemandeDAO extends DAO<Demande>{
         ArrayList<Demande> lesDemandes = new ArrayList<Demande>();
         try {
             Statement state = pdo.createStatement();
-            String requete = "SELECT * FROM demande";
+            String requete = "SELECT iddemande, idservice, idmedicament, quantite FROM demande";
             ResultSet demandeResultat = state.executeQuery(requete);
 
             while (demandeResultat.next()) {
@@ -179,7 +179,7 @@ public class DemandeDAO extends DAO<Demande>{
         }
         ArrayList<Demande> lesDemandes = new ArrayList<Demande>();
         try {
-            String requete = "SELECT * FROM demande where idservice=?";
+            String requete = "SELECT iddemande, idservice, idmedicament, quantite FROM demande where idservice=?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
             
             prepare.setInt(1, idService);

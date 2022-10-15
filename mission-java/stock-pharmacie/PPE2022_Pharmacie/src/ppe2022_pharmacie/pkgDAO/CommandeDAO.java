@@ -25,7 +25,7 @@ public class CommandeDAO extends DAO<Commandes>{
         String fournisseur = uneCommande.getFournisseur();
         String medicament = uneCommande.getMedicament();
         int qtte = uneCommande.getQtte();
-        String requete = "Insert Into commandes values (?,?,?,?)";
+        String requete = "Insert Into commandes(idc,fournisseur, medicament, qtte) values (?,?,?,?)";
 
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
@@ -139,7 +139,7 @@ public class CommandeDAO extends DAO<Commandes>{
     // ArrayList de commandes où on obtient tous les objets commandes de la table commandes
     @Override
     public ArrayList<Commandes> findAll() {
-        // meme chose que la methodes donnerToutesLesCommades()
+        // meme chose que la methodes donnerToutesLesCommandes()
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -154,7 +154,7 @@ public class CommandeDAO extends DAO<Commandes>{
         ArrayList<Commandes> lesCommandes = new ArrayList<Commandes>();
         try {
             Statement state = pdo.createStatement();
-            String requete = "select * from commandes";
+            String requete = "select idc, fournisseur, medicament, qtte from commandes";
             ResultSet commandesResultat = state.executeQuery(requete);
             while (commandesResultat.next()) {
                 int idc = commandesResultat.getInt(1);
