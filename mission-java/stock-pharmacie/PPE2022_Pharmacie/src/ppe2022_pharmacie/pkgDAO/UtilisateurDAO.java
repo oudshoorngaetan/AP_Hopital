@@ -135,11 +135,14 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
             Connection();
         }
         try {
-            Statement state = pdo.createStatement();
+            //Statement state = pdo.createStatement();
             String requete = "Select count(idpersonnel), service, idpersonnel from "
-                    + "authentification where login ='" + login + "' and passe='" 
-                    + password + "' group by service, idpersonnel";
-            ResultSet authResultat = state.executeQuery(requete);
+                    + "authentification where login =? and passe=? group by service, idpersonnel";
+            //ResultSet authResultat = state.executeQuery(requete);
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+            prepare.setString(1, login);
+            prepare.setString(2, password);
+            ResultSet authResultat = prepare.executeQuery(requete);
             if (authResultat.next()) {
                 infos[0] = authResultat.getInt(1);
                 infos[1] = authResultat.getInt(2);
@@ -163,9 +166,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
             Connection();
         }
         try {
-            Statement state = pdo.createStatement();
-            String requete = "select passe from authentification where login = '" + login + "'";
-            ResultSet authResultat = state.executeQuery(requete);
+            //Statement state = pdo.createStatement();
+            String requete = "select passe from authentification where login =?";
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+            prepare.setString(1, login);
+            ResultSet authResultat = prepare.executeQuery(requete);
             if (authResultat.next()) {
                 info = authResultat.getString(1);
             }
