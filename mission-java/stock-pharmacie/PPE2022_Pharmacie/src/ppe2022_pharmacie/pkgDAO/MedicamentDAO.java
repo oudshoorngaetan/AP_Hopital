@@ -61,7 +61,7 @@ public class MedicamentDAO extends DAO<Medicament>{
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, pId);
             ResultSet result = prepare.executeQuery();
-            while (result.next()) {
+            if (result.next()) {
                 String libelle = result.getString(1);
                 int qtte = result.getInt(2);
                 int seuil = result.getInt(3);
@@ -275,7 +275,8 @@ public class MedicamentDAO extends DAO<Medicament>{
         ArrayList<Medicament> lesStocks = new ArrayList<Medicament>();
         try {
             Statement state = pdo.createStatement();
-            String requete = "select idm, libelle, qtte, seuil, categorie from medicament where categorie = \'" + pCategorie + "\'";
+            String requete = "select idm, libelle, qtte, seuil, categorie from medicament where categorie = \'" 
+                    + pCategorie + "\'";
             ResultSet stockResultat = state.executeQuery(requete);
             while (stockResultat.next()) {
                 int id = stockResultat.getInt(1);
@@ -383,7 +384,7 @@ public class MedicamentDAO extends DAO<Medicament>{
             Statement state = pdo.createStatement();
             String requete1 = "select max(idm) from medicament";
             ResultSet stockResultat = state.executeQuery(requete1);
-            while (stockResultat.next()) {
+            if (stockResultat.next()) {
                 id = stockResultat.getInt(1);
             }
         } catch (Exception e) {

@@ -59,7 +59,8 @@ public class Demande {
     
     @Override
     public String toString() {
-        return "Demande{" + "idD=" + idDemande + ", service = " + service.getLibelle() + ", medicament= " + medicament.getLibelle() + ", qtte=" + qtte + '}';
+        return "Demande{" + "idD=" + idDemande + ", service = " + service.getLibelle() +
+                ", medicament= " + medicament.getLibelle() + ", qtte=" + qtte + '}';
 
     }
 }

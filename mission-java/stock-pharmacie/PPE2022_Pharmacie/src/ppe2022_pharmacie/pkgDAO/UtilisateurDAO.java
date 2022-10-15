@@ -55,21 +55,21 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
     public Boolean update(Utilisateur unUser) {
         boolean estFonctionnel = false;
         String requete = "Update authentification set login = ?, passe=?, service=? where idpersonnel=?";
-         try{
+        try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setString(1, unUser.getLogin());
             prepare.setString(2, unUser.getHash());
             prepare.setInt(3, unUser.getService().getIdService());
             prepare.setInt(4, unUser.getIdUser());
             prepare.executeUpdate();
-            
-            estFonctionnel = true; 
-         }catch (Exception e) {
+
+            estFonctionnel = true;
+        } catch (Exception e) {
             System.out.println(e);
             System.out.println("Erreur dans la modification de l'utilisateur");
         }
-         
-         return estFonctionnel;
+
+        return estFonctionnel;
     }
 
     /* méthode qui supprime un utilisateur dans la bdd
@@ -79,13 +79,13 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
              false si la suppression dans la bdd n'a pas pu être réalisée.*/
     @Override
     public Boolean delete(Utilisateur unObjet) {
-        boolean estFonctionnel=  false;
+        boolean estFonctionnel = false;
         String requete = "delete from authentification where idpersonnel=?";
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, unObjet.getIdUser());
             prepare.executeUpdate();
-            
+
             estFonctionnel = true;
         } catch (Exception e) {
             System.out.println(e);
@@ -100,10 +100,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
     RETURN : une collection des utilisateurs */
     @Override
     public ArrayList<Utilisateur> findAll() {
-          if (pdo == null) {
+        if (pdo == null) {
             Connection();
         }
-        String requete = "select login, service.libelle, service, idpersonnel, passe from authentification join service on authentification.service = service.idservice";
+        String requete = "select login, service.libelle, service, idpersonnel, passe from"
+                + " authentification join service on authentification.service = service.idservice";
         ArrayList<Utilisateur> lesUsers = new ArrayList<>();
         try {
             Statement state = pdo.createStatement();
@@ -123,7 +124,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         }
         return lesUsers;
     }
-    
+
     /* méthode qui affiche un tableau des utilisateurs 
     PARAMETRES : login, password 
     
@@ -135,7 +136,9 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         }
         try {
             Statement state = pdo.createStatement();
-            String requete = "Select count(idpersonnel), service, idpersonnel from authentification where login ='" + login + "' and passe='" + password + "' group by service, idpersonnel";
+            String requete = "Select count(idpersonnel), service, idpersonnel from "
+                    + "authentification where login ='" + login + "' and passe='" 
+                    + password + "' group by service, idpersonnel";
             ResultSet authResultat = state.executeQuery(requete);
             if (authResultat.next()) {
                 infos[0] = authResultat.getInt(1);
@@ -149,7 +152,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         }
         return infos;
     }
-    
+
     /* méthode qui permet d'afficher le mot de passe 
     PARAMETRE : login
     
