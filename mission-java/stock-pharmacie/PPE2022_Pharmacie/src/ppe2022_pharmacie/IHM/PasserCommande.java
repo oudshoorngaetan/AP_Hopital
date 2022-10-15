@@ -325,7 +325,8 @@ public class PasserCommande extends javax.swing.JFrame {
 
     private void txtQuantiteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantiteKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9' || evt.getKeyCode() == 8 || evt.getKeyCode() == 37 || evt.getKeyCode() == 38 || evt.getKeyCode() == 39 || evt.getKeyCode() == 40 || evt.getKeyCode() == 127) {
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9' || evt.getKeyCode() == 8 || evt.getKeyCode() == 37 ||
+                evt.getKeyCode() == 38 || evt.getKeyCode() == 39 || evt.getKeyCode() == 40 || evt.getKeyCode() == 127) {
             txtQuantite.setEditable(true);
         } else {
             txtQuantite.setEditable(false);
@@ -341,7 +342,8 @@ public class PasserCommande extends javax.swing.JFrame {
         String Total = String.valueOf(qttefinal);
         lblTotalFinal.setText(Total);
         
-        String recap = "Commande : "+lblIdAfficherLibelle.getText()+" \nAjout : "+txtQuantite.getText()+" \nTotal : "+lblTotalFinal.getText()+" \nFournisseur : "+cbxFournisseur.getSelectedItem();
+        String recap = "Commande : "+lblIdAfficherLibelle.getText()+" \nAjout : "+txtQuantite.getText()+" \nTotal : "+
+                lblTotalFinal.getText()+" \nFournisseur : "+cbxFournisseur.getSelectedItem();
         txtaVisu.setText(recap);
     }//GEN-LAST:event_btnVisualiserMouseClicked
 

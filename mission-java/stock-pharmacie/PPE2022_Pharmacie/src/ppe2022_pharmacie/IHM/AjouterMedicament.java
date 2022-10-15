@@ -260,7 +260,9 @@ public class AjouterMedicament extends javax.swing.JFrame {
     }//GEN-LAST:event_btnValiderMouseClicked
 
     private void btnVisualiserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVisualiserMouseClicked
-        String recap = "Id : "+lblIdAfficher .getText()+" \nLibelle : "+txtLibelle.getText()+" \nQuantité : "+txtQuantite.getText()+" \nSeuil : "+txtSeuil.getText()+" \nCatégorie : "+txtCategorie.getText();
+        String recap = "Id : "+lblIdAfficher .getText()+" \nLibelle : "+txtLibelle.getText()+
+                " \nQuantité : "+txtQuantite.getText()+" \nSeuil : "+txtSeuil.getText()+
+                " \nCatégorie : "+txtCategorie.getText();
         txtaVisu.setText(recap);
     }//GEN-LAST:event_btnVisualiserMouseClicked
 
