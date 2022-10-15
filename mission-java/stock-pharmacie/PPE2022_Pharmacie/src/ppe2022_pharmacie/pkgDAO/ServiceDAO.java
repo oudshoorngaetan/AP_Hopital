@@ -4,10 +4,12 @@
  */
 package ppe2022_pharmacie.pkgDAO;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import ppe2022_pharmacie.metiers.Service;
+import static ppe2022_pharmacie.pkgDAO.DAO.pdo;
 
 /**
  *
@@ -36,12 +38,14 @@ public class ServiceDAO extends DAO<Service> {
          if (pdo == null) {
             Connection();
         }
-        String requete = "select libelle from service where idservice = " + id;
+        String requete = "select libelle from service where idservice =?";
         Service service = null;
         String libelleService;
         try {
-            Statement state = pdo.createStatement();
-            ResultSet serviceResultat = state.executeQuery(requete);
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+            prepare.setInt(1, id);
+            //Statement state = pdo.createStatement();
+            ResultSet serviceResultat = prepare.executeQuery(requete);
             if (serviceResultat.next()) {
                 libelleService = serviceResultat.getString(1);
                 service = new Service(id, libelleService);
@@ -81,7 +85,7 @@ public class ServiceDAO extends DAO<Service> {
             Connection();
         }
         ArrayList<Service> lesService = new ArrayList<>();
-        String requete = "select * from service";
+        String requete = "select idservice, libelle from service";
         try {
             Statement state = pdo.createStatement();
             ResultSet serviceResultat = state.executeQuery(requete);
@@ -107,11 +111,13 @@ public class ServiceDAO extends DAO<Service> {
         }
         int idService = 0;
         try {
-            Statement state = pdo.createStatement();
-            String requete = "select idservice from service where libelle='" + libelle + "'";
-            ResultSet authResultat = state.executeQuery(requete);
-            if (authResultat.next()) {
-                idService = authResultat.getInt(1);
+            //Statement state = pdo.createStatement();
+            String requete = "select idservice from service where libelle=?";
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+            prepare.setString(1, libelle);
+            ResultSet resultat = prepare.executeQuery(requete);
+            if (resultat.next()) {
+                idService = resultat.getInt(1);
             }
         } catch (Exception e) {
             System.out.println(e);

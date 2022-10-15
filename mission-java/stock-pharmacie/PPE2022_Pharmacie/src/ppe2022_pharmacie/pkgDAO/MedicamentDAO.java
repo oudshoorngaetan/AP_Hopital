@@ -251,7 +251,7 @@ public class MedicamentDAO extends DAO<Medicament>{
             ArrayCategorie.add(Tous);
             while (stockResultat.next()) {
                 String categorie = stockResultat.getString(1);
-//                Medicament unStock = new Medicament(categorie);
+            //Medicament unStock = new Medicament(categorie);
                 ArrayCategorie.add(categorie);
             }
             stockResultat.close();
@@ -274,10 +274,11 @@ public class MedicamentDAO extends DAO<Medicament>{
         }
         ArrayList<Medicament> lesStocks = new ArrayList<Medicament>();
         try {
-            Statement state = pdo.createStatement();
-            String requete = "select idm, libelle, qtte, seuil, categorie from medicament where categorie = \'" 
-                    + pCategorie + "\'";
-            ResultSet stockResultat = state.executeQuery(requete);
+            //Statement state = pdo.createStatement();
+            String requete = "select idm, libelle, qtte, seuil, categorie from medicament where categorie =?";
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+            prepare.setString(2, pCategorie);
+            ResultSet stockResultat = prepare.executeQuery();
             while (stockResultat.next()) {
                 int id = stockResultat.getInt(1);
                 String libelle = stockResultat.getString(2);
@@ -288,7 +289,7 @@ public class MedicamentDAO extends DAO<Medicament>{
                 lesStocks.add(unStock);
             }
             stockResultat.close();
-            state.close();
+            prepare.close();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -340,8 +341,11 @@ public class MedicamentDAO extends DAO<Medicament>{
         }
         try {
             Statement state = pdo.createStatement();
-            String requete = "SELECT qtte FROM medicament WHERE idm=" + idM;
-            ResultSet qtteResultat = state.executeQuery(requete);
+            String requete = "SELECT qtte FROM medicament WHERE idm=?";
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+            prepare.setInt(1, idM);
+            
+            ResultSet qtteResultat = prepare.executeQuery();
 
             if (qtteResultat.next()) {
                 qtteD = qtteResultat.getInt(1);
@@ -362,9 +366,12 @@ public class MedicamentDAO extends DAO<Medicament>{
             Connection();
         }
         try {
-            Statement state = pdo.createStatement();
-            String requete = "UPDATE medicament SET qtte=" + qtteF + " WHERE idm=" + idM;
-            int r = state.executeUpdate(requete);
+            //Statement state = pdo.createStatement();
+            String requete = "UPDATE medicament SET qtte=? WHERE idm=?";
+            PreparedStatement prepare = pdo.prepareStatement(requete);
+            prepare.setInt(1, idM);
+            prepare.setInt(2, qtteF);
+            int r = prepare.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Aucune Demande ou id");
@@ -382,8 +389,8 @@ public class MedicamentDAO extends DAO<Medicament>{
         }
         try {
             Statement state = pdo.createStatement();
-            String requete1 = "select max(idm) from medicament";
-            ResultSet stockResultat = state.executeQuery(requete1);
+            String requete = "select max(idm) from medicament";
+            ResultSet stockResultat = state.executeQuery(requete);
             if (stockResultat.next()) {
                 id = stockResultat.getInt(1);
             }
