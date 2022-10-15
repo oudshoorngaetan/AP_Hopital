@@ -9,6 +9,7 @@ import ppe2022_pharmacie.pkgDAO.UtilisateurDAO;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,11 +18,12 @@ import javax.swing.JFrame;
 public class AfficherLesUsers extends javax.swing.JFrame {
 
     private static final UtilisateurDAO passerelleUser = new UtilisateurDAO();
+
     /**
      * Creates new form AfficherLesUsers
      */
     public AfficherLesUsers() {
-        
+
         this.setResizable(false);
         initComponents();
         passerelleUser.Connection();
@@ -166,22 +168,21 @@ public class AfficherLesUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuitterMouseClicked
 
     private void btnSupprUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupprUserMouseClicked
-        Integer choix = lstUser.getSelectedIndex();
-        if (choix != null) {
+        // GO : Try & catch à la place d'un if else
+        try {
+            Integer choix = lstUser.getSelectedIndex();
             Object val = lstUser.getModel().getElementAt(choix);
             Utilisateur unUser = (Utilisateur) val;
-
             passerelleUser.delete(unUser);
-
             DefaultListModel listModel = new DefaultListModel();
             for (Utilisateur u : passerelleUser.findAll()) {
                 listModel.addElement(u);
             }
             lstUser.setModel(listModel);
-        } else {
-            lblOutput.setText("aucun utilisateur n'a été choisi");
-        }
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Aucun utilisateur n'a été choisi");
+        }
 
     }//GEN-LAST:event_btnSupprUserMouseClicked
 
@@ -190,24 +191,25 @@ public class AfficherLesUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAjouterMouseClicked
 
     private void btnModifUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifUserMouseClicked
-        Integer choix = lstUser.getSelectedIndex();
-        if (choix != null) {
+        // GO : Try & catch à la place d'un if else
+        try {
+            Integer choix = lstUser.getSelectedIndex();
             Object val = lstUser.getModel().getElementAt(choix);
             Utilisateur unUser = (Utilisateur) val;
 
-            new AjouterUtilisateur(unUser,this).setVisible(true);
+            new AjouterUtilisateur(unUser, this).setVisible(true);
 
             DefaultListModel listModel = new DefaultListModel();
             for (Utilisateur u : passerelleUser.findAll()) {
                 listModel.addElement(u);
             }
-        DefaultListModel listeModel = new DefaultListModel();
-        for (Utilisateur u : passerelleUser.findAll()) {
-            listeModel.addElement(u);
-        }
+            DefaultListModel listeModel = new DefaultListModel();
+            for (Utilisateur u : passerelleUser.findAll()) {
+                listeModel.addElement(u);
+            }
             lstUser.setModel(listeModel);
-        } else {
-            lblOutput.setText("aucun utilisateur n'a été choisi");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Aucun utilisateur n'a été choisi");
         }
     }//GEN-LAST:event_btnModifUserMouseClicked
 

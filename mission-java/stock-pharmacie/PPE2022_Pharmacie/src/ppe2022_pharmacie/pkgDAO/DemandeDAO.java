@@ -67,7 +67,7 @@ public class DemandeDAO extends DAO<Demande>{
             prepare.setInt(1, id);
             ResultSet userResultat = prepare.executeQuery();
 
-            while (userResultat.next()) {
+            if (userResultat.next()) {
                 int idD = userResultat.getInt(1);
                 int idS = userResultat.getInt(2);
                 int idM = userResultat.getInt(3);

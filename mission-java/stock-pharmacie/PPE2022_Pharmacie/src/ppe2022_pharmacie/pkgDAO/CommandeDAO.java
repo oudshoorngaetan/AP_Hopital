@@ -59,7 +59,7 @@ public class CommandeDAO extends DAO<Commandes>{
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, pId);
             ResultSet result = prepare.executeQuery();
-            while (result.next()) {
+            if (result.next()) {
                 String fournisseur = result.getString(1);
                 String medicament = result.getString(2);
                 int qtte = result.getInt(3);

@@ -4,9 +4,10 @@ import ppe2022_pharmacie.metiers.Medicament;
 import ppe2022_pharmacie.pkgDAO.CommandeDAO;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class PasserCommande extends javax.swing.JFrame {
-    
+
     private Medicament unPdt;
 
     public PasserCommande(Medicament unPdt) {
@@ -14,18 +15,18 @@ public class PasserCommande extends javax.swing.JFrame {
         this.setResizable(false);
         initComponents();
         CommandeDAO.Connection();
-        
+
         ArrayList<String> ArrayFournisseur = CommandeDAO.donnerFournisseur();
         for (String f : ArrayFournisseur) {
             cbxFournisseur.addItem(f);
         }
-        
+
         if (unPdt != null) {
             lblIdAfficherId.setText(unPdt.getId() + "");
             lblIdAfficherLibelle.setText(unPdt.getLibelle());
             lblIdAfficherCategorie.setText(unPdt.getCategorie());
             lblIdAfficherQuantite.setText(unPdt.getQtteStock() + "");
-            lblAfficheSeuil.setText(unPdt.getSeuil()+ "");
+            lblAfficheSeuil.setText(unPdt.getSeuil() + "");
         }
     }
 
@@ -325,8 +326,8 @@ public class PasserCommande extends javax.swing.JFrame {
 
     private void txtQuantiteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantiteKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9' || evt.getKeyCode() == 8 || evt.getKeyCode() == 37 ||
-                evt.getKeyCode() == 38 || evt.getKeyCode() == 39 || evt.getKeyCode() == 40 || evt.getKeyCode() == 127) {
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9' || evt.getKeyCode() == 8 || evt.getKeyCode() == 37
+                || evt.getKeyCode() == 38 || evt.getKeyCode() == 39 || evt.getKeyCode() == 40 || evt.getKeyCode() == 127) {
             txtQuantite.setEditable(true);
         } else {
             txtQuantite.setEditable(false);
@@ -334,16 +335,21 @@ public class PasserCommande extends javax.swing.JFrame {
     }//GEN-LAST:event_txtQuantiteKeyPressed
 
     private void btnVisualiserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVisualiserMouseClicked
+        String recap = "";
         String qtte1 = lblIdAfficherQuantite.getText();
         String qtte2 = txtQuantite.getText();
-        int iqtte1 = Integer.parseInt(qtte1);
-        int iqtte2 = Integer.parseInt(qtte2);
-        int qttefinal = iqtte1 + iqtte2;
-        String Total = String.valueOf(qttefinal);
-        lblTotalFinal.setText(Total);
-        
-        String recap = "Commande : "+lblIdAfficherLibelle.getText()+" \nAjout : "+txtQuantite.getText()+" \nTotal : "+
-                lblTotalFinal.getText()+" \nFournisseur : "+cbxFournisseur.getSelectedItem();
+        if (qtte2.equals("")) {
+            recap = "Erreur : Quantité non saisie";
+        } else {
+            int iqtte1 = Integer.parseInt(qtte1);
+            int iqtte2 = Integer.parseInt(qtte2);
+            int qttefinal = iqtte1 + iqtte2;
+            String Total = String.valueOf(qttefinal);
+            lblTotalFinal.setText(Total);
+
+            recap = "Commande : " + lblIdAfficherLibelle.getText() + " \nAjout : " + txtQuantite.getText() + " \nTotal : "
+                    + lblTotalFinal.getText() + " \nFournisseur : " + cbxFournisseur.getSelectedItem();
+        }
         txtaVisu.setText(recap);
     }//GEN-LAST:event_btnVisualiserMouseClicked
 
@@ -352,18 +358,23 @@ public class PasserCommande extends javax.swing.JFrame {
     }//GEN-LAST:event_txtaVisuKeyPressed
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
-        
+
         String fournisseur = cbxFournisseur.getSelectedItem().toString();
         String medicament = lblIdAfficherLibelle.getText();
         String qtte1 = txtQuantite.getText();
-        int qtte = Integer.parseInt(qtte1);
-        if(CommandeDAO.ajouterCommande(fournisseur, medicament,qtte) == true){
-            lblValider.setText("La commande est refusévalidé.");
-        }else{
-            lblValider.setText("La commande est validé.");
-        };
-        
-        
+        if (qtte1.equals("")) {
+            lblValider.setText("La commande est refusé");
+        } else {
+            int qtte = Integer.parseInt(qtte1);
+            if (CommandeDAO.ajouterCommande(fournisseur, medicament, qtte)) {
+                JOptionPane.showMessageDialog(null, "La commande est validé.");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "La commande est refusé.");
+            }
+        }
+
+
     }//GEN-LAST:event_btnValiderMouseClicked
 
     /**

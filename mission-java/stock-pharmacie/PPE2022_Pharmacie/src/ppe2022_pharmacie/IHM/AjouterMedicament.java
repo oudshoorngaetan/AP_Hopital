@@ -5,6 +5,7 @@
  */
 package ppe2022_pharmacie.IHM;
 
+import javax.swing.JOptionPane;
 import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
 import ppe2022_pharmacie.metiers.Medicament;
 
@@ -13,7 +14,7 @@ import ppe2022_pharmacie.metiers.Medicament;
  * @author sio2021
  */
 public class AjouterMedicament extends javax.swing.JFrame {
-    
+
     private static final MedicamentDAO passerelleMedic = new MedicamentDAO();
 
     /**
@@ -23,8 +24,8 @@ public class AjouterMedicament extends javax.swing.JFrame {
         initComponents();
         MedicamentDAO.Connection();
         int intid = MedicamentDAO.derniereid();
-        String id = String.valueOf(intid);
-        lblIdAfficher.setText(id+ "");
+        String id = String.valueOf(intid + 1);
+        lblIdAfficher.setText(id + "");
     }
 
     /**
@@ -238,32 +239,82 @@ public class AjouterMedicament extends javax.swing.JFrame {
     }//GEN-LAST:event_txtaVisuKeyPressed
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
+        String recap = "";
 
-        String stringid = lblIdAfficher.getText();
-        int id = Integer.parseInt(stringid);
-        String libelle = txtLibelle.getText();
-        String stringqtte = txtQuantite.getText();
-        int qtte = Integer.parseInt(stringqtte);
-        String stringseuil = txtSeuil.getText();
-        int seuil = Integer.parseInt(stringseuil);
-        String categorie = txtCategorie.getText();
-        
-        Medicament unMedicament = new Medicament(id, libelle, qtte, seuil, categorie);
-        passerelleMedic.create(unMedicament);
-        
-        if(passerelleMedic.create(unMedicament) == true){
-            lblValider.setText("La commande est refusévalidé.");
-        }else{
-            lblValider.setText("La commande est validé.");
-        };
+        int qtteTest, seuilTest;
+        // GO : Ajout d'une vérification de saisie de chaque champs
+        if (lblIdAfficher.getText().equals("")
+                || txtLibelle.getText().equals("")
+                || txtQuantite.getText().equals("")
+                || txtSeuil.getText().equals("")
+                || txtCategorie.getText().equals("")) {
+            recap = "Erreur : au moins un champ est vide";
+        } else {
+            try {
+                qtteTest = Integer.parseInt(txtQuantite.getText());
+                seuilTest = Integer.parseInt(txtSeuil.getText());
+                if (qtteTest <= 0 || seuilTest <= 0) {
+                    recap = "Erreur : Quantité ou Seuil n'est pas un entier positif";
+                }
+            } catch (Exception e) {
+                recap = "Erreur : Quantité ou seuil n'est pas un entier";
+            }
+        }
+
+        if (recap.equals("")) {
+            String stringid = lblIdAfficher.getText();
+            int id = Integer.parseInt(stringid);
+            String libelle = txtLibelle.getText();
+            String stringqtte = txtQuantite.getText();
+            int qtte = Integer.parseInt(stringqtte);
+            String stringseuil = txtSeuil.getText();
+            int seuil = Integer.parseInt(stringseuil);
+            String categorie = txtCategorie.getText();
+
+            Medicament unMedicament = new Medicament(id, libelle, qtte, seuil, categorie);
+            if (passerelleMedic.create(unMedicament)) {
+                JOptionPane.showMessageDialog(null, "La commande est validé.");
+                // Quitte la fenêtre lorsque l'ajout a été effectué
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erreur innatendue\nLa commande est refusé.");
+            }
+        } else {
+            lblValider.setText(recap);
+        }
 
     }//GEN-LAST:event_btnValiderMouseClicked
 
     private void btnVisualiserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVisualiserMouseClicked
-        String recap = "Id : "+lblIdAfficher .getText()+" \nLibelle : "+txtLibelle.getText()+
-                " \nQuantité : "+txtQuantite.getText()+" \nSeuil : "+txtSeuil.getText()+
-                " \nCatégorie : "+txtCategorie.getText();
+        String recap = "";
+        int qtteTest, seuilTest;
+        // GO : Ajout d'une vérification de saisie de chaque champs
+        if (lblIdAfficher.getText().equals("")
+                || txtLibelle.getText().equals("")
+                || txtQuantite.getText().equals("")
+                || txtSeuil.getText().equals("")
+                || txtCategorie.getText().equals("")) {
+            recap = "Erreur : au moins un champ est vide";
+        } else {
+            try {
+                qtteTest = Integer.parseInt(txtQuantite.getText());
+                seuilTest = Integer.parseInt(txtSeuil.getText());
+                if (qtteTest <= 0 || seuilTest <= 0) {
+                    recap = "Erreur : Quantité ou Seuil n'est pas un entier positif";
+                }
+            } catch (Exception e) {
+                recap = "Erreur : Quantité ou seuil n'est pas un entier";
+            }
+        }
+        if (recap.equals("")) {
+            recap = "Id : " + lblIdAfficher.getText() + " \nLibelle : " + txtLibelle.getText()
+                    + " \nQuantité : " + txtQuantite.getText() + " \nSeuil : " + txtSeuil.getText()
+                    + " \nCatégorie : " + txtCategorie.getText();
+        }
+
         txtaVisu.setText(recap);
+
+
     }//GEN-LAST:event_btnVisualiserMouseClicked
 
     /**
