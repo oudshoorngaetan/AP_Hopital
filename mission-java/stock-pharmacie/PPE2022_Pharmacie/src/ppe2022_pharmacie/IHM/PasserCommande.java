@@ -375,6 +375,7 @@ public class PasserCommande extends javax.swing.JFrame {
             int qtte = Integer.parseInt(qtte1);
             if (CommandeDAO.ajouterCommande(fournisseur, medicament, qtte)) {
                 JOptionPane.showMessageDialog(null, "La commande est validé.");
+                  new AfficherTousLesStock(unUser).setVisible(true);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "La commande est refusé.");

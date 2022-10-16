@@ -22,8 +22,8 @@ abstract class DAO<T> {
     // Paramètre : Aucun
     // Retour : Aucun
     public static void Connection() {
-        String url = "jdbc:postgresql://192.168.1.42:5432/bdd_stock";
-        //String url = "jdbc:postgresql://192.168.0.43:5432/bdd_stock";
+        //String url = "jdbc:postgresql://192.168.1.42:5432/bdd_stock";
+        String url = "jdbc:postgresql://192.168.0.43:5432/bdd_stock";
         String user = "gagou";
         String passwd = "Zoz09!";
         //Etablir connexion
