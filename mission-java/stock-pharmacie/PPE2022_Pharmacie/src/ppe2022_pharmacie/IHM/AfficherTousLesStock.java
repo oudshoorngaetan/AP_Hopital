@@ -9,15 +9,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class AfficherTousLesStock extends javax.swing.JFrame {
-    
+
     MedicamentDAO passerelleMedicament = new MedicamentDAO();
-    
+
     ArrayList<Medicament> unStock = new ArrayList<Medicament>();
     Scanner sc = new Scanner(System.in);
     private Utilisateur unUser;
 
     public AfficherTousLesStock(Utilisateur unUtilisateur) {
-        
+
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         unUser = unUtilisateur;
@@ -34,14 +34,13 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         for (String c : ArrayCategorie) {
             cbxCategorie.addItem(c);
         }
-        
-        lblUser1.setText(unUtilisateur.getLogin()+": "+unUtilisateur.getService());
+
+        lblUser1.setText(unUtilisateur.getLogin() + ": " + unUtilisateur.getService());
     }
 
     AfficherTousLesStock() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -456,8 +455,9 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         int choix = lstAfficherTous.getSelectedIndex();
         Object val = lstAfficherTous.getModel().getElementAt(choix);
         Medicament unPdt = (Medicament) val;
-        
-        PasserCommande g= new PasserCommande(unPdt,unUser);g.setVisible(true);
+
+        PasserCommande g = new PasserCommande(unPdt, unUser);
+        g.setVisible(true);
     }//GEN-LAST:event_lstAfficherTousMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -566,16 +566,16 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         cbxCategorie.setSelectedItem(tous);
         new AfficherCommande(unUser).setVisible(true);
         //Pour fermer la page
-        
+
         dispose();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         String tous = "Tous";
         cbxCategorie.setSelectedItem(tous);
-        new AjouterMedicament().setVisible(true);
+        new AjouterMedicament(unUser).setVisible(true);
         //Pour fermer la page
-       // dispose();
+        dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
     public static void main(String args[]) {
@@ -603,7 +603,6 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

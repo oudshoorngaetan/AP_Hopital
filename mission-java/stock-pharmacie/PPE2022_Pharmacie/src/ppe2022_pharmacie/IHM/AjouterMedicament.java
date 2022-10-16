@@ -22,12 +22,24 @@ public class AjouterMedicament extends javax.swing.JFrame {
     /**
      * Creates new form AjouterMedicament
      */
-    public AjouterMedicament() {
+    public AjouterMedicament(Utilisateur unUser) {
+        this.unUser = unUser;
         initComponents();
         MedicamentDAO.Connection();
         int intid = MedicamentDAO.derniereid();
         String id = String.valueOf(intid + 1);
         lblIdAfficher.setText(id + "");
+    }
+    
+    //methode qui vérifie si la saisie est un entier ou non
+    //retourne un booléen
+    public static boolean isNumber(String in) {
+        try {
+            Integer.parseInt(in);
+            return true;
+        } catch (Exception E) {
+            return false;
+        }
     }
 
     /**
@@ -259,6 +271,9 @@ public class AjouterMedicament extends javax.swing.JFrame {
                 if (qtteTest <= 0 || seuilTest <= 0) {
                     recap = "Erreur : Quantité ou Seuil n'est pas un entier positif";
                 }
+                if (txtCategorie.getText().equals("") || isNumber(txtCategorie.getText())) {
+                    recap = "Erreur : Catégorie doit être une chaîne de caractères";
+                }
             } catch (Exception e) {
                 recap = "Erreur : Quantité ou seuil n'est pas un entier";
             }
@@ -278,6 +293,7 @@ public class AjouterMedicament extends javax.swing.JFrame {
             if (passerelleMedic.create(unMedicament)) {
                 JOptionPane.showMessageDialog(null, "La commande est validé.");
                 // Quitte la fenêtre lorsque l'ajout a été effectué
+                new AfficherTousLesStock(unUser).setVisible(true); //rendre visible la page AfficherTousLesStock
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Erreur innatendue\nLa commande est refusé.");
@@ -304,6 +320,9 @@ public class AjouterMedicament extends javax.swing.JFrame {
                 seuilTest = Integer.parseInt(txtSeuil.getText());
                 if (qtteTest <= 0 || seuilTest <= 0) {
                     recap = "Erreur : Quantité ou Seuil n'est pas un entier positif";
+                }
+                if (txtCategorie.getText().equals("") || isNumber(txtCategorie.getText())) {
+                    recap = "Erreur : Catégorie doit être une chaîne de caractères";
                 }
             } catch (Exception e) {
                 recap = "Erreur : Quantité ou seuil n'est pas un entier";
@@ -350,7 +369,7 @@ public class AjouterMedicament extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AjouterMedicament().setVisible(true);
+                //new AjouterMedicament().setVisible(true);
             }
         });
     }
