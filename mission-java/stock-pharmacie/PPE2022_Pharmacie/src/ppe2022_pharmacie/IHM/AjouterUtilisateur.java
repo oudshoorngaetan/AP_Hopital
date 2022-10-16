@@ -11,8 +11,8 @@ import ppe2022_pharmacie.pkgDAO.UtilisateurDAO;
 import java.security.MessageDigest;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-//import javax.xml.bind.DatatypeConverter;
-import jakarta.xml.bind.DatatypeConverter;
+import javax.xml.bind.DatatypeConverter;
+//import jakarta.xml.bind.DatatypeConverter;
 
 /**
  *
@@ -56,11 +56,12 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
 
         cbxService.setSelectedItem(unUser.getService());
     }
-    public AjouterUtilisateur(Utilisateur unUser,AfficherLesUsers frameuser) {
+
+    public AjouterUtilisateur(Utilisateur unUser, AfficherLesUsers frameuser) {
 
         this.setResizable(false);
         initComponents();
-        this.frameuser=frameuser;
+        this.frameuser = frameuser;
         btnValider.setVisible(false);
         lblOutputID.setText(String.valueOf(unUser.getIdUser()));
         passerelleUser.Connection();
@@ -69,8 +70,8 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
         for (Service s : passerelleService.findAll()) {
             cbxService.addItem(s.getLibelle());
         }
-
-        cbxService.setSelectedItem(unUser.getService());
+        // OL : récupération du service 
+        cbxService.setSelectedItem(unUser.getService().getLibelle());
     }
 
     /**
@@ -133,10 +134,14 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
             }
         });
 
-        pwdPasse.setText("jPasswordField1");
         pwdPasse.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pwdPasseFocusGained(evt);
+            }
+        });
+        pwdPasse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdPasseActionPerformed(evt);
             }
         });
 
@@ -220,68 +225,78 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
             passe += unChar;
         }
         String hash = "";
-        try{
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte raw[] = md.digest(passe.getBytes("UTF-8"));
-        hash = DatatypeConverter.printHexBinary(raw);
-        System.out.println(hash);
-        
-        String service = (String) cbxService.getSelectedItem();
-        int idService = passerelleService.getIdService(service);
-
-        Utilisateur unUser = new Utilisateur(login, new Service(idService,service), 2, hash);
-        if(!login.equals("") && !hash.equals("") && !passe.equals("")){
-            passerelleUser.create(unUser);
-            JOptionPane.showMessageDialog(null, "Utilisateur créé");
-        } else {
-            JOptionPane.showMessageDialog(null, "Login ou Mot de passe vide");
-        }
-        
-        dispose(); 
-        }catch(Exception e){
-            System.out.println(e);
-        }
-        
-        
-    }//GEN-LAST:event_btnValiderMouseClicked
-
-    private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
-        String login = txtLogin.getText();
-        String passe = "";
-        char[] passeChar = pwdPasse.getPassword();
-        for (char unChar : passeChar) {
-            passe += unChar;
-        }
-        int idUser = Integer.parseInt(lblOutputID.getText());
-        String service = (String) cbxService.getSelectedItem();
-        String hash = "";
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte raw[] = md.digest(passe.getBytes("UTF-8"));
             hash = DatatypeConverter.printHexBinary(raw);
+            System.out.println(hash);
+
+            String service = (String) cbxService.getSelectedItem();
+            int idService = passerelleService.getIdService(service);
+
+            Utilisateur unUser = new Utilisateur(login, new Service(idService, service), 2, hash);
+            if (!login.equals("") && !hash.equals("") && !passe.equals("")) {
+                passerelleUser.create(unUser);
+                JOptionPane.showMessageDialog(null, "Utilisateur créé");
+            } else {
+                JOptionPane.showMessageDialog(null, "Login ou Mot de passe vide");
+            }
+
+            dispose();
         } catch (Exception e) {
             System.out.println(e);
         }
 
-        int idService = passerelleService.getIdService(service);
 
-        Utilisateur unUser = new Utilisateur(login, new Service(idService,service), idUser, hash);
-        
-        passerelleUser.update(unUser);
-        DefaultListModel listModel = new DefaultListModel();
-        for (Utilisateur u : passerelleUser.findAll()) {
-            listModel.addElement(u);
+    }//GEN-LAST:event_btnValiderMouseClicked
+
+    private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
+        //OL: vérifier que le mot de passe et le login ne sont pas vides
+        if (pwdPasse.getPassword().length != 0 && !txtLogin.getText().equals("")) {
+
+            String login = txtLogin.getText();
+            String passe = "";
+            char[] passeChar = pwdPasse.getPassword();
+            for (char unChar : passeChar) {
+                passe += unChar;
+            }
+            int idUser = Integer.parseInt(lblOutputID.getText());
+            String service = (String) cbxService.getSelectedItem();
+            String hash = "";
+            try {
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                byte raw[] = md.digest(passe.getBytes("UTF-8"));
+                hash = DatatypeConverter.printHexBinary(raw);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+            int idService = passerelleService.getIdService(service);
+
+            Utilisateur unUser = new Utilisateur(login, new Service(idService, service), idUser, hash);
+
+            passerelleUser.update(unUser);
+            DefaultListModel listModel = new DefaultListModel();
+            for (Utilisateur u : passerelleUser.findAll()) {
+                listModel.addElement(u);
+            }
+
+            JOptionPane.showMessageDialog(null, "Utilisateur Modifié");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Champs login et/ou mot de passe vide");
         }
-        
-        JOptionPane.showMessageDialog(null, "Utilisateur Modifié");
-        dispose();
 
     }//GEN-LAST:event_btnModifierMouseClicked
 
     private void pwdPasseFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwdPasseFocusGained
-           pwdPasse.setText("");
+        pwdPasse.setText("");
 
     }//GEN-LAST:event_pwdPasseFocusGained
+
+    private void pwdPasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPasseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdPasseActionPerformed
 
     /**
      * @param args the command line arguments

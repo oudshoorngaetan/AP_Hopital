@@ -12,20 +12,22 @@ import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import javax.xml.bind.DatatypeConverter;
-import jakarta.xml.bind.DatatypeConverter;
+import javax.xml.bind.DatatypeConverter;
+//import jakarta.xml.bind.DatatypeConverter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hbana
  */
-public class Authentification extends javax.swing.JFrame  implements KeyListener {
+public class Authentification extends javax.swing.JFrame implements KeyListener {
+
     private static final UtilisateurDAO passerelleUser = new UtilisateurDAO();
     private static final ServiceDAO passerelleService = new ServiceDAO();
-    
+
     /**
      * Creates new form Authentification
      */
@@ -133,52 +135,55 @@ public class Authentification extends javax.swing.JFrame  implements KeyListener
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void btnConnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConnexionMouseClicked
-        String login = txtLogin.getText();
-        String passe = "";
-        char[] passeChar = pwdPasse.getPassword();
-        for (char unChar : passeChar) {
-            passe += unChar;
-        }
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte raw[] = md.digest(passe.getBytes("UTF-8"));
-            String hash;
-            hash = DatatypeConverter.printHexBinary(raw);
-            
-            int[] info = passerelleUser.Authentification(login, hash);
-            Service service = passerelleService.find(info[1]);
-            System.out.println(info[0]);
-            System.out.println(info[1]);
-            System.out.println(info[2]);
-            Utilisateur unUtilisateur = new Utilisateur(login, service, info[2], hash);
-            
-            
-            if (info[0] == 0) {
-                lblOutput.setText("Erreur dans le couple Login/mdp");
-            } else {
-                lblOutput.setText("Connexion Effectuee");
-                switch(info[1]){
-                    case 0:
-                        break;
-                    case 1:
-                        new AfficherLesUsers().setVisible(true);
-                        this.dispose();
-                        break;
-                    case 2:
-                        new AfficherTousLesStock(unUtilisateur).setVisible(true);
-                        this.dispose();
-                        break;
-                    default:
-                        System.out.println(unUtilisateur.getService().getLibelle());
-                        new AfficherDemandes(false, unUtilisateur).setVisible(true);
-                        this.dispose();
-                        break;
-                }
+        if (pwdPasse.getPassword().length != 0 && !txtLogin.getText().equals("")) {
+            String login = txtLogin.getText();
+            String passe = "";
+            char[] passeChar = pwdPasse.getPassword();
+            for (char unChar : passeChar) {
+                passe += unChar;
             }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                byte raw[] = md.digest(passe.getBytes("UTF-8"));
+                String hash;
+                hash = DatatypeConverter.printHexBinary(raw);
+
+                int[] info = passerelleUser.Authentification(login, hash);
+                Service service = passerelleService.find(info[1]);
+                System.out.println(info[0]);
+                System.out.println(info[1]);
+                System.out.println(info[2]);
+                Utilisateur unUtilisateur = new Utilisateur(login, service, info[2], hash);
+
+                if (info[0] == 0) {
+                    lblOutput.setText("Erreur dans le couple Login/mdp");
+                } else {
+                    lblOutput.setText("Connexion Effectuee");
+                    switch (info[1]) {
+                        case 0:
+                            break;
+                        case 1:
+                            new AfficherLesUsers().setVisible(true);
+                            this.dispose();
+                            break;
+                        case 2:
+                            new AfficherTousLesStock(unUtilisateur).setVisible(true);
+                            this.dispose();
+                            break;
+                        default:
+                            System.out.println(unUtilisateur.getService().getLibelle());
+                            new AfficherDemandes(false, unUtilisateur).setVisible(true);
+                            this.dispose();
+                            break;
+                    }
+                }
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Champs login et/ou mot de passe vide");
         }
     }//GEN-LAST:event_btnConnexionMouseClicked
 
@@ -191,64 +196,69 @@ public class Authentification extends javax.swing.JFrame  implements KeyListener
     }//GEN-LAST:event_pwdPasseMouseClicked
 // Quand on press enter ça valide le form
     private void pwdPasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwdPasseKeyPressed
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           String login = txtLogin.getText();
-        String passe = "";
-        char[] passeChar = pwdPasse.getPassword();
-        for (char unChar : passeChar) {
-            passe += unChar;
-        }
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte raw[] = md.digest(passe.getBytes("UTF-8"));
-            String hash;
-            hash = DatatypeConverter.printHexBinary(raw);
-            
-            int[] info = passerelleUser.Authentification(login, hash);
-            Service service = passerelleService.find(info[1]);
-            System.out.println(info[0]);
-            System.out.println(info[1]);
-            System.out.println(info[2]);
-            Utilisateur unUtilisateur = new Utilisateur(login, service, info[2], hash);
-            
-            
-            if (info[0] == 0) {
-                lblOutput.setText("Erreur dans le couple Login/mdp");
-            } else {
-                lblOutput.setText("Connexion Effectuee");
-                switch(info[1]){
-                    case 0:
-                        break;
-                    case 1:
-                        new AfficherLesUsers().setVisible(true);
-                        this.dispose();
-                        break;
-                    case 2:
-                        new AfficherTousLesStock(unUtilisateur).setVisible(true);
-                        this.dispose();
-                        break;
-                    default:
-                        System.out.println(unUtilisateur.getService().getLibelle());
-                        new AfficherDemandes(false, unUtilisateur).setVisible(true);
-                        this.dispose();
-                        break;
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            if (pwdPasse.getPassword().length != 0 && !txtLogin.getText().equals("")) {
+                String login = txtLogin.getText();
+
+                String passe = "";
+                char[] passeChar = pwdPasse.getPassword();
+                for (char unChar : passeChar) {
+                    passe += unChar;
                 }
+                try {
+                    MessageDigest md = MessageDigest.getInstance("MD5");
+                    byte raw[] = md.digest(passe.getBytes("UTF-8"));
+                    String hash;
+                    hash = DatatypeConverter.printHexBinary(raw);
+
+                    int[] info = passerelleUser.Authentification(login, hash);
+                    Service service = passerelleService.find(info[1]);
+                    System.out.println(info[0]);
+                    System.out.println(info[1]);
+                    System.out.println(info[2]);
+                    Utilisateur unUtilisateur = new Utilisateur(login, service, info[2], hash);
+
+                    if (info[0] == 0) {
+                        lblOutput.setText("Erreur dans le couple Login/mdp");
+                    } else {
+                        lblOutput.setText("Connexion Effectuee");
+                        switch (info[1]) {
+                            case 0:
+                                break;
+                            case 1:
+                                new AfficherLesUsers().setVisible(true);
+                                this.dispose();
+                                break;
+                            case 2:
+                                new AfficherTousLesStock(unUtilisateur).setVisible(true);
+                                this.dispose();
+                                break;
+                            default:
+                                System.out.println(unUtilisateur.getService().getLibelle());
+                                new AfficherDemandes(false, unUtilisateur).setVisible(true);
+                                this.dispose();
+                                break;
+                        }
+                    }
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Champs login et/ou mot de passe vide");
             }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
         }
-       }
     }//GEN-LAST:event_pwdPasseKeyPressed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        
+
     }//GEN-LAST:event_formKeyPressed
 
     private void pwdPasseFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwdPasseFocusGained
-         
-    pwdPasse.setText("");
+
+        pwdPasse.setText("");
     }//GEN-LAST:event_pwdPasseFocusGained
 
     /**

@@ -157,6 +157,13 @@ public class AfficherCommande extends javax.swing.JFrame {
 
     private void btnActualiser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualiser1MouseClicked
         // TODO add your handling code here:
+        uneCommande = CommandeDAO.donnerToutesLesCommandes();
+
+        DefaultListModel listModel = new DefaultListModel();
+        for (Commandes pdt : CommandeDAO.donnerToutesLesCommandes()) {
+            listModel.addElement(pdt);
+        }
+        lstAfficherCommande.setModel(listModel);
     }//GEN-LAST:event_btnActualiser1MouseClicked
 
     private void btnActualiser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualiser1ActionPerformed

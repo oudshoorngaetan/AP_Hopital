@@ -210,8 +210,8 @@ public class CreationDeDemande extends javax.swing.JFrame {
         Demande uneDemande = null;
 
         // GO : Voir explications dans btnModifierMouseClicked
-        if (Sqtte.isEmpty() || !isNumber(Sqtte) || Integer.parseInt(Sqtte) < 0) {
-            JOptionPane.showMessageDialog(null, "Erreur quantité vide");
+        if (Sqtte.isEmpty() || !isNumber(Sqtte) || Integer.parseInt(Sqtte) <= 0) {
+            JOptionPane.showMessageDialog(null, "Erreur de saisie");
 
         } else {
             // GO : Création d'une requête pour récupérer le dernier ID et faire +1 pour la création (pas d'id en double)
@@ -320,8 +320,8 @@ public class CreationDeDemande extends javax.swing.JFrame {
         // Déplacer en dernière condition permet de faire ces premières vérifications 
         // et si la condition est fausse : on ne vérifie pas la prochaine
         // Ainsi on a jamais d'erreur
-        if (Sqtte.isEmpty() || !isNumber(Sqtte) || Integer.parseInt(Sqtte) < 0) {
-            JOptionPane.showMessageDialog(null, "Erreur quantité vide / négatif ou n'est pas un nombre.");
+        if (Sqtte.isEmpty() || !isNumber(Sqtte) || Integer.parseInt(Sqtte) <= 0) {
+            JOptionPane.showMessageDialog(null, "Erreur de saisie");
         } else {
 
             Demande uneDemande = new Demande(idDemande, idServ, idMed, Integer.parseInt(Sqtte));
