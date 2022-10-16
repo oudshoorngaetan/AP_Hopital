@@ -575,7 +575,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         cbxCategorie.setSelectedItem(tous);
         new AjouterMedicament().setVisible(true);
         //Pour fermer la page
-        dispose();
+       // dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
     public static void main(String args[]) {
