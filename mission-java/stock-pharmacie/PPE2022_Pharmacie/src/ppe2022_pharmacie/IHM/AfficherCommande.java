@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import ppe2022_pharmacie.metiers.Utilisateur;
 
 public class AfficherCommande extends javax.swing.JFrame {
 
     ArrayList<Commandes> uneCommande = new ArrayList<Commandes>();
     Scanner sc = new Scanner(System.in);
+    private Utilisateur unUser;
 
     public AfficherCommande() {
 
@@ -161,7 +163,8 @@ public class AfficherCommande extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualiser1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        //new AfficherTousLesStock().setVisible(true);  
+      new AfficherTousLesStock(unUser).setVisible(true);
+ 
         dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 

@@ -8,6 +8,7 @@ package ppe2022_pharmacie.IHM;
 import javax.swing.JOptionPane;
 import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
 import ppe2022_pharmacie.metiers.Medicament;
+import ppe2022_pharmacie.metiers.Utilisateur;
 
 /**
  *
@@ -16,6 +17,7 @@ import ppe2022_pharmacie.metiers.Medicament;
 public class AjouterMedicament extends javax.swing.JFrame {
 
     private static final MedicamentDAO passerelleMedic = new MedicamentDAO();
+    private Utilisateur unUser;
 
     /**
      * Creates new form AjouterMedicament
