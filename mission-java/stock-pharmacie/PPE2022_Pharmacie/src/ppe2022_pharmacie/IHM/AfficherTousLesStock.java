@@ -37,6 +37,10 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         
         lblUser1.setText(unUtilisateur.getLogin()+": "+unUtilisateur.getService());
     }
+
+    AfficherTousLesStock() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
   
 
     @SuppressWarnings("unchecked")
@@ -549,6 +553,8 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         String tous = "Tous";
         cbxCategorie.setSelectedItem(tous);
         new AfficherDemandes(true, unUser).setVisible(true);
+        //fermer la page
+        dispose();
     }//GEN-LAST:event_btnDemandesMouseClicked
 
     private void btnDemandesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemandesActionPerformed
@@ -559,6 +565,8 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         String tous = "Tous";
         cbxCategorie.setSelectedItem(tous);
         new AfficherCommande().setVisible(true);
+        //Pour fermer la page
+        dispose();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
