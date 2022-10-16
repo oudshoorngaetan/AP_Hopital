@@ -173,7 +173,7 @@ public class AfficherLesUsers extends javax.swing.JFrame {
             Integer choix = lstUser.getSelectedIndex();
             Object val = lstUser.getModel().getElementAt(choix);
             Utilisateur unUser = (Utilisateur) val;
-
+            //OL/ boite de confirmation
             if (JOptionPane.showConfirmDialog(null, "Voulez-vous supprimer l'utilisateur ?") == 0) {
                 passerelleUser.delete(unUser);
                 DefaultListModel listModel = new DefaultListModel();
