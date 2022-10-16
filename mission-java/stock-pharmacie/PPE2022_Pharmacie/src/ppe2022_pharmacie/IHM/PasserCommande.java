@@ -5,12 +5,15 @@ import ppe2022_pharmacie.pkgDAO.CommandeDAO;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import ppe2022_pharmacie.metiers.Utilisateur;
 
 public class PasserCommande extends javax.swing.JFrame {
 
     private Medicament unPdt;
+    private Utilisateur unUser;
 
-    public PasserCommande(Medicament unPdt) {
+    public PasserCommande(Medicament unPdt, Utilisateur unUser) {
+        this.unUser = unUser;
 
         this.setResizable(false);
         initComponents();
@@ -308,6 +311,8 @@ public class PasserCommande extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       new AfficherTousLesStock(unUser).setVisible(true);
+
         dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 

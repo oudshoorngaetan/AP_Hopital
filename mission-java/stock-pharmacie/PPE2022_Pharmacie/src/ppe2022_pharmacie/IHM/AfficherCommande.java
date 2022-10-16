@@ -14,11 +14,12 @@ public class AfficherCommande extends javax.swing.JFrame {
     Scanner sc = new Scanner(System.in);
     private Utilisateur unUser;
 
-    public AfficherCommande() {
-
+    public AfficherCommande(Utilisateur unUser) {
+       this.unUser = unUser;
         this.setResizable(false);
         initComponents();
         CommandeDAO.Connection();
+        
         uneCommande = CommandeDAO.donnerToutesLesCommandes();
 
         DefaultListModel listModel = new DefaultListModel();
@@ -198,7 +199,7 @@ public class AfficherCommande extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AfficherCommande().setVisible(true);
+              // new AfficherCommande(unUser).setVisible(true);
             }
         });
     }

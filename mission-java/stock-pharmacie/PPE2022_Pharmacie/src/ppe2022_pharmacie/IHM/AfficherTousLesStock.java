@@ -457,7 +457,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         Object val = lstAfficherTous.getModel().getElementAt(choix);
         Medicament unPdt = (Medicament) val;
         
-        PasserCommande g= new PasserCommande(unPdt);g.setVisible(true);
+        PasserCommande g= new PasserCommande(unPdt,unUser);g.setVisible(true);
     }//GEN-LAST:event_lstAfficherTousMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -564,7 +564,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         String tous = "Tous";
         cbxCategorie.setSelectedItem(tous);
-        new AfficherCommande().setVisible(true);
+        new AfficherCommande(unUser).setVisible(true);
         //Pour fermer la page
         
         dispose();
@@ -575,7 +575,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         cbxCategorie.setSelectedItem(tous);
         new AjouterMedicament().setVisible(true);
         //Pour fermer la page
-        //dispose();
+        dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
     public static void main(String args[]) {
