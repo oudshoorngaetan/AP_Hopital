@@ -37,6 +37,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         
         lblUser1.setText(unUtilisateur.getLogin()+": "+unUtilisateur.getService());
     }
+  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -564,6 +565,8 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         String tous = "Tous";
         cbxCategorie.setSelectedItem(tous);
         new AjouterMedicament().setVisible(true);
+        //Pour fermer la page
+        dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
     public static void main(String args[]) {

@@ -206,8 +206,20 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
         int qtte = Integer.parseInt(Sqtte);
 
+
+      JOptionPane.showMessageDialog(null, "ce n'est pas un number");
+
         Demande uneDemande = null;
         // GO : Création d'une requête pour récupérer le dernier ID et faire +1 pour la création (pas d'id en double)
+       
+        
+        if(Sqtte.isEmpty() || qtte<0 || !isNumber(Sqtte) ){
+            JOptionPane.showMessageDialog(null, "Erreur quantité vide");
+
+        }
+        else{
+                
+                
         try {
             String requete = "SELECT max(iddemande) FROM demande";
             // GO : DemandeDAO.getPdo() pour récupérer l'attribut pdo de la classe DAO
@@ -219,14 +231,25 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
                 passerelleDemande.create(uneDemande);
                 JOptionPane.showMessageDialog(null, "Demande créée");
+                //ajout julien
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
-        }
+        }}
     }//GEN-LAST:event_btnVActionPerformed
-
+// ajout julien : Création d'une méthode pour verif si integer
+    public static boolean isNumber(String in) {
+        try {
+            Integer.parseInt(in);
+            return true;
+        }
+        catch(Exception E){
+            return false;
+        }
+    }
     private void btnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnulerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnnulerActionPerformed
@@ -291,12 +314,21 @@ public class CreationDeDemande extends javax.swing.JFrame {
         int idServ = idService;
 
         int qtte = Integer.parseInt(Sqtte);
+        //Verif si nombre valide
+         if(Sqtte.isEmpty() || qtte<0 || !isNumber(Sqtte) ){
+            JOptionPane.showMessageDialog(null, "Erreur quantité vide / négatif ou n'est pas un nombre.");
+
+        }
+        else{
 
         Demande uneDemande = new Demande(idDemande, idServ, idMed, qtte);
 
         passerelleDemande.update(uneDemande);
 
         JOptionPane.showMessageDialog(null, "Demande modifiée");
+        //ajout julien
+        dispose();
+         }
     }//GEN-LAST:event_btnModifierMouseClicked
 
     /**

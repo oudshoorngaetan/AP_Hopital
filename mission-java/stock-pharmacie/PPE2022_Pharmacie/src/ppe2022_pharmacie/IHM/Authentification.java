@@ -12,17 +12,20 @@ import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.bind.DatatypeConverter;
-//import jakarta.xml.bind.DatatypeConverter;
+//import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 /**
  *
  * @author hbana
  */
-public class Authentification extends javax.swing.JFrame {
+public class Authentification extends javax.swing.JFrame  implements KeyListener {
     private static final UtilisateurDAO passerelleUser = new UtilisateurDAO();
     private static final ServiceDAO passerelleService = new ServiceDAO();
+    
     /**
      * Creates new form Authentification
      */
@@ -48,6 +51,11 @@ public class Authentification extends javax.swing.JFrame {
         pwdPasse = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         txtLogin.setText("Login");
         txtLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -69,9 +77,19 @@ public class Authentification extends javax.swing.JFrame {
         });
 
         pwdPasse.setText("jPasswordField1");
+        pwdPasse.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pwdPasseFocusGained(evt);
+            }
+        });
         pwdPasse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pwdPasseMouseClicked(evt);
+            }
+        });
+        pwdPasse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pwdPasseKeyPressed(evt);
             }
         });
 
@@ -171,6 +189,67 @@ public class Authentification extends javax.swing.JFrame {
     private void pwdPasseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwdPasseMouseClicked
         pwdPasse.setText("");
     }//GEN-LAST:event_pwdPasseMouseClicked
+// Quand on press enter ça valide le form
+    private void pwdPasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwdPasseKeyPressed
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+           String login = txtLogin.getText();
+        String passe = "";
+        char[] passeChar = pwdPasse.getPassword();
+        for (char unChar : passeChar) {
+            passe += unChar;
+        }
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte raw[] = md.digest(passe.getBytes("UTF-8"));
+            String hash;
+            hash = DatatypeConverter.printHexBinary(raw);
+            
+            int[] info = passerelleUser.Authentification(login, hash);
+            Service service = passerelleService.find(info[1]);
+            System.out.println(info[0]);
+            System.out.println(info[1]);
+            System.out.println(info[2]);
+            Utilisateur unUtilisateur = new Utilisateur(login, service, info[2], hash);
+            
+            
+            if (info[0] == 0) {
+                lblOutput.setText("Erreur dans le couple Login/mdp");
+            } else {
+                lblOutput.setText("Connexion Effectuee");
+                switch(info[1]){
+                    case 0:
+                        break;
+                    case 1:
+                        new AfficherLesUsers().setVisible(true);
+                        this.dispose();
+                        break;
+                    case 2:
+                        new AfficherTousLesStock(unUtilisateur).setVisible(true);
+                        this.dispose();
+                        break;
+                    default:
+                        System.out.println(unUtilisateur.getService().getLibelle());
+                        new AfficherDemandes(false, unUtilisateur).setVisible(true);
+                        this.dispose();
+                        break;
+                }
+            }
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       }
+    }//GEN-LAST:event_pwdPasseKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        
+    }//GEN-LAST:event_formKeyPressed
+
+    private void pwdPasseFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwdPasseFocusGained
+         
+    pwdPasse.setText("");
+    }//GEN-LAST:event_pwdPasseFocusGained
 
     /**
      * @param args the command line arguments
@@ -213,4 +292,19 @@ public class Authentification extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwdPasse;
     private java.awt.TextField txtLogin;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

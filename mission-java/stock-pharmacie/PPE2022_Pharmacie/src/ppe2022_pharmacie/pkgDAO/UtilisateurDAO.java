@@ -143,6 +143,9 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
             prepare.setString(1, login);
             prepare.setString(2, password);
             ResultSet authResultat = prepare.executeQuery(requete);
+            //Utiliser un truc du genre nn?  EXEMPLE : 
+                //  PreparedStatement stmt = connection.prepareStatement(maRequete);
+               //  stmt.executeUpdate();
             if (authResultat.next()) {
                 infos[0] = authResultat.getInt(1);
                 infos[1] = authResultat.getInt(2);

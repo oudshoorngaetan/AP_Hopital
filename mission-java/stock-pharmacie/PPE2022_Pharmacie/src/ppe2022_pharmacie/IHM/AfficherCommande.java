@@ -161,6 +161,7 @@ public class AfficherCommande extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualiser1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+      new AfficherTousLesStock().setVisible(true);  
         dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
