@@ -11,8 +11,8 @@ import ppe2022_pharmacie.pkgDAO.UtilisateurDAO;
 import java.security.MessageDigest;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.xml.bind.DatatypeConverter;
-//import jakarta.xml.bind.DatatypeConverter;
+//import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 /**
  *
