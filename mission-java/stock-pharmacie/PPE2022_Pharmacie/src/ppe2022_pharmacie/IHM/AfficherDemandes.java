@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package ppe2022_pharmacie.IHM;
+
 import ppe2022_pharmacie.metiers.*;
 import ppe2022_pharmacie.pkgDAO.MedicamentDAO;
 import ppe2022_pharmacie.pkgDAO.DemandeDAO;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -200,7 +202,7 @@ public class AfficherDemandes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFermerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFermerMouseClicked
-       new AfficherTousLesStock().setVisible(true); 
+
         dispose();
     }//GEN-LAST:event_btnFermerMouseClicked
 
@@ -244,11 +246,16 @@ public class AfficherDemandes extends javax.swing.JFrame {
 
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
         int choix = lstDemandes.getSelectedIndex();
+        try{
         Object val = lstDemandes.getModel().getElementAt(choix);
 
         Demande laDemande = (Demande) val;
 
         new CreationDeDemande(unUser, laDemande).setVisible(true);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Aucune demande n'a été sélectionnée");
+        }
     }//GEN-LAST:event_btnModifierMouseClicked
 
     private void btnActualiserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualiserMouseClicked
@@ -256,7 +263,7 @@ public class AfficherDemandes extends javax.swing.JFrame {
         DefaultListModel listModel = new DefaultListModel();
         if (!unUser.getService().getLibelle().equals("Pharmacien")) {
             for (Demande dmd : passerelleDemande.AfficherDemandeParService(unUser.getService().getIdService())) {
-                    listModel.addElement(dmd);
+                listModel.addElement(dmd);
             }
         } else {
             for (Demande dmd : passerelleDemande.findAll()) {

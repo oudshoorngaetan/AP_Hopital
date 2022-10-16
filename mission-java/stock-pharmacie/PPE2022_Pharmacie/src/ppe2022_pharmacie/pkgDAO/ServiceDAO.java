@@ -45,7 +45,7 @@ public class ServiceDAO extends DAO<Service> {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, id);
             //Statement state = pdo.createStatement();
-            ResultSet serviceResultat = prepare.executeQuery(requete);
+            ResultSet serviceResultat = prepare.executeQuery();
             if (serviceResultat.next()) {
                 libelleService = serviceResultat.getString(1);
                 service = new Service(id, libelleService);
@@ -115,7 +115,7 @@ public class ServiceDAO extends DAO<Service> {
             String requete = "select idservice from service where libelle=?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setString(1, libelle);
-            ResultSet resultat = prepare.executeQuery(requete);
+            ResultSet resultat = prepare.executeQuery();
             if (resultat.next()) {
                 idService = resultat.getInt(1);
             }

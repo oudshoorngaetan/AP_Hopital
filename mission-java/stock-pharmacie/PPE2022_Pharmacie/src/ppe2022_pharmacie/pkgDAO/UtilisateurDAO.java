@@ -142,7 +142,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setString(1, login);
             prepare.setString(2, password);
-            ResultSet authResultat = prepare.executeQuery(requete);
+            ResultSet authResultat = prepare.executeQuery();
             //Utiliser un truc du genre nn?  EXEMPLE : 
                 //  PreparedStatement stmt = connection.prepareStatement(maRequete);
                //  stmt.executeUpdate();
@@ -150,7 +150,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
                 infos[0] = authResultat.getInt(1);
                 infos[1] = authResultat.getInt(2);
                 infos[2] = authResultat.getInt(3);
-            }
+            } 
 
         } catch (Exception e) {
             System.out.println(e);
@@ -173,7 +173,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
             String requete = "select passe from authentification where login =?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setString(1, login);
-            ResultSet authResultat = prepare.executeQuery(requete);
+            ResultSet authResultat = prepare.executeQuery();
             if (authResultat.next()) {
                 info = authResultat.getString(1);
             }

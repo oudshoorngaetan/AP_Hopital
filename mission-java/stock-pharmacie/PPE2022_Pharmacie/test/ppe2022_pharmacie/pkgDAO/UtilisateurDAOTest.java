@@ -67,7 +67,7 @@ public class UtilisateurDAOTest {
         Utilisateur result = instance.find(id);
         assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -124,14 +124,17 @@ public class UtilisateurDAOTest {
     @Test
     public void testAuthentification() {
         System.out.println("Authentification");
-        String login = "";
-        String password = "";
+        String login = "Radiologie";
+        String password = "FDD03ECD5844F694BC5B201535B2D1EA";
         UtilisateurDAO instance = new UtilisateurDAO();
-        int[] expResult = null;
+        int[] expResult = new int[3];
+        expResult[0] = 1;
+        expResult[1] = 4;
+        expResult[2] = 3;
         int[] result = instance.Authentification(login, password);
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -140,13 +143,13 @@ public class UtilisateurDAOTest {
     @Test
     public void testGetHashMdp() {
         System.out.println("getHashMdp");
-        String login = "";
+        String login = "Radiologie";
         UtilisateurDAO instance = new UtilisateurDAO();
-        String expResult = "";
+        String expResult = "FDD03ECD5844F694BC5B201535B2D1EA";
         String result = instance.getHashMdp(login);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }

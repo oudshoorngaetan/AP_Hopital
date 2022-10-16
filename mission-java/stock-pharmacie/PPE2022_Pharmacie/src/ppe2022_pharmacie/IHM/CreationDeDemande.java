@@ -204,49 +204,45 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
         int idServ = idService;
 
-        int qtte = Integer.parseInt(Sqtte);
-
-
-      JOptionPane.showMessageDialog(null, "ce n'est pas un number");
+        // GO : Voir explications dans btnModifierMouseClicked
+        //int qtte = Integer.parseInt(Sqtte);
 
         Demande uneDemande = null;
-        // GO : Création d'une requête pour récupérer le dernier ID et faire +1 pour la création (pas d'id en double)
-       
-        
-        if(Sqtte.isEmpty() || qtte<0 || !isNumber(Sqtte) ){
+
+        // GO : Voir explications dans btnModifierMouseClicked
+        if (Sqtte.isEmpty() || !isNumber(Sqtte) || Integer.parseInt(Sqtte) < 0) {
             JOptionPane.showMessageDialog(null, "Erreur quantité vide");
 
-        }
-        else{
-                
-                
-        try {
-            String requete = "SELECT max(iddemande) FROM demande";
-            // GO : DemandeDAO.getPdo() pour récupérer l'attribut pdo de la classe DAO
-            Statement stmt = DemandeDAO.getPdo().createStatement();
-            ResultSet demandeResultat = stmt.executeQuery(requete);
-            if (demandeResultat.next()) {
-                idDemande = demandeResultat.getInt(1) + 1;
-                uneDemande = new Demande(idDemande, idServ, idMed, qtte);
+        } else {
+            // GO : Création d'une requête pour récupérer le dernier ID et faire +1 pour la création (pas d'id en double)
+            try {
+                String requete = "SELECT max(iddemande) FROM demande";
+                // GO : DemandeDAO.getPdo() pour récupérer l'attribut pdo de la classe DAO
+                Statement stmt = DemandeDAO.getPdo().createStatement();
+                ResultSet demandeResultat = stmt.executeQuery(requete);
+                if (demandeResultat.next()) {
+                    idDemande = demandeResultat.getInt(1) + 1;
+                    uneDemande = new Demande(idDemande, idServ, idMed, Integer.parseInt(Sqtte));
 
-                passerelleDemande.create(uneDemande);
-                JOptionPane.showMessageDialog(null, "Demande créée");
-                //ajout julien
-                dispose();
-            } else {
+                    passerelleDemande.create(uneDemande);
+                    JOptionPane.showMessageDialog(null, "Demande créée");
+                    //ajout julien
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
+                }
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
-        }}
+        }
     }//GEN-LAST:event_btnVActionPerformed
 // ajout julien : Création d'une méthode pour verif si integer
+
     public static boolean isNumber(String in) {
         try {
             Integer.parseInt(in);
             return true;
-        }
-        catch(Exception E){
+        } catch (Exception E) {
             return false;
         }
     }
@@ -290,7 +286,6 @@ public class CreationDeDemande extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erreur lors de la demande");
         }*/
 
-
     }//GEN-LAST:event_btnVMouseClicked
 
     private void txtQtteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtteActionPerformed
@@ -312,23 +307,31 @@ public class CreationDeDemande extends javax.swing.JFrame {
         String Sqtte = txtQtte.getText();
 
         int idServ = idService;
-
-        int qtte = Integer.parseInt(Sqtte);
-        //Verif si nombre valide
-         if(Sqtte.isEmpty() || qtte<0 || !isNumber(Sqtte) ){
+        
+        // GO : Ne peut pas être mis ici car :
+        // Si c'est vide => Erreur
+        // Si c'est une chaine de caractère => Erreur
+        
+        // int qtte = Integer.parseInt(Sqtte);
+        
+        // Verif si nombre valide
+        // GO : J'ai déplacé Integer.parseInt(Sqtte) en dernière condition car :
+        // Si ce n'est pas un nombre ou si c'est vide on obtient une erreur.
+        // Déplacer en dernière condition permet de faire ces premières vérifications 
+        // et si la condition est fausse : on ne vérifie pas la prochaine
+        // Ainsi on a jamais d'erreur
+        if (Sqtte.isEmpty() || !isNumber(Sqtte) || Integer.parseInt(Sqtte) < 0) {
             JOptionPane.showMessageDialog(null, "Erreur quantité vide / négatif ou n'est pas un nombre.");
+        } else {
 
+            Demande uneDemande = new Demande(idDemande, idServ, idMed, Integer.parseInt(Sqtte));
+
+            passerelleDemande.update(uneDemande);
+
+            JOptionPane.showMessageDialog(null, "Demande modifiée");
+            //ajout julien
+            dispose();
         }
-        else{
-
-        Demande uneDemande = new Demande(idDemande, idServ, idMed, qtte);
-
-        passerelleDemande.update(uneDemande);
-
-        JOptionPane.showMessageDialog(null, "Demande modifiée");
-        //ajout julien
-        dispose();
-         }
     }//GEN-LAST:event_btnModifierMouseClicked
 
     /**

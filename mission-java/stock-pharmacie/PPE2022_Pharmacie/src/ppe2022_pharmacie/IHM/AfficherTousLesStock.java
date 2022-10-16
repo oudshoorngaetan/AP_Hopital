@@ -542,7 +542,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
 
     private void btnDeconnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeconnexionMouseClicked
         new Authentification().setVisible(true);
-        dispose();
+        //dispose();
     }//GEN-LAST:event_btnDeconnexionMouseClicked
 
     private void btnDeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeconnexionActionPerformed
@@ -554,7 +554,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         cbxCategorie.setSelectedItem(tous);
         new AfficherDemandes(true, unUser).setVisible(true);
         //fermer la page
-        dispose();
+        //dispose();
     }//GEN-LAST:event_btnDemandesMouseClicked
 
     private void btnDemandesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemandesActionPerformed
@@ -566,7 +566,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         cbxCategorie.setSelectedItem(tous);
         new AfficherCommande().setVisible(true);
         //Pour fermer la page
-        dispose();
+        //dispose();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -574,7 +574,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         cbxCategorie.setSelectedItem(tous);
         new AjouterMedicament().setVisible(true);
         //Pour fermer la page
-        dispose();
+        //dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
     public static void main(String args[]) {
