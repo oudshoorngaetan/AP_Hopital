@@ -97,7 +97,7 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
 
         jButton3.setText("jButton3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblPasse.setText("Login");
 
@@ -134,6 +134,11 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
         });
 
         pwdPasse.setText("jPasswordField1");
+        pwdPasse.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pwdPasseFocusGained(evt);
+            }
+        });
 
         lblId.setText("id Utilisateur");
 
@@ -272,6 +277,11 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_btnModifierMouseClicked
+
+    private void pwdPasseFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwdPasseFocusGained
+           pwdPasse.setText("");
+
+    }//GEN-LAST:event_pwdPasseFocusGained
 
     /**
      * @param args the command line arguments
