@@ -202,7 +202,7 @@ public class AfficherDemandes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFermerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFermerMouseClicked
-new AfficherTousLesStock(unUser).setVisible(true);
+        new AfficherTousLesStock(unUser).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnFermerMouseClicked
 
@@ -212,19 +212,25 @@ new AfficherTousLesStock(unUser).setVisible(true);
     }//GEN-LAST:event_lstDemandesMouseClicked
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
-
-        int choix = lstDemandes.getSelectedIndex();
-        Object val = lstDemandes.getModel().getElementAt(choix);
-        Demande uneDmd = (Demande) val;
-        int qtteM = passerelleMedicament.avoirQtte(uneDmd.getMedicament().getId());
-        passerelleMedicament.validerQtte(uneDmd.getQtte(), qtteM, uneDmd.getMedicament().getId());
-        passerelleDemande.delete(uneDmd);
-        //Actualisation
-        DefaultListModel listModel = new DefaultListModel();
-        for (Demande dmd : passerelleDemande.findAll()) {
-            listModel.addElement(dmd);
+        //OL :) : Try and catch pour afficher erreur si rien n'est sélectionné
+        try {
+            int choix = lstDemandes.getSelectedIndex();
+            Object val = lstDemandes.getModel().getElementAt(choix);
+            Demande uneDmd = (Demande) val;
+            int qtteM = passerelleMedicament.avoirQtte(uneDmd.getMedicament().getId());
+            //OL : demande de confirmation pour valider les demandes
+            if (JOptionPane.showConfirmDialog(null, "Voulez-vous valider la demande ?") == 0) {
+                passerelleMedicament.validerQtte(uneDmd.getQtte(), qtteM, uneDmd.getMedicament().getId());
+                passerelleDemande.delete(uneDmd);
+                DefaultListModel listModel = new DefaultListModel();
+                for (Demande dmd : passerelleDemande.findAll()) {
+                    listModel.addElement(dmd);
+                }
+                lstDemandes.setModel(listModel);
+            }
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(null, "Erreur : aucune demande sélectionnée");
         }
-        lstDemandes.setModel(listModel);
     }//GEN-LAST:event_btnValiderMouseClicked
 
     private void btnCreerDemandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreerDemandeActionPerformed
@@ -246,14 +252,13 @@ new AfficherTousLesStock(unUser).setVisible(true);
 
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
         int choix = lstDemandes.getSelectedIndex();
-        try{
-        Object val = lstDemandes.getModel().getElementAt(choix);
+        try {
+            Object val = lstDemandes.getModel().getElementAt(choix);
 
-        Demande laDemande = (Demande) val;
+            Demande laDemande = (Demande) val;
 
-        new CreationDeDemande(unUser, laDemande).setVisible(true);
-        }
-        catch(Exception e){
+            new CreationDeDemande(unUser, laDemande).setVisible(true);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Aucune demande n'a été sélectionnée");
         }
     }//GEN-LAST:event_btnModifierMouseClicked

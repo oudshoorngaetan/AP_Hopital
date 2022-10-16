@@ -277,7 +277,7 @@ public class MedicamentDAO extends DAO<Medicament>{
             //Statement state = pdo.createStatement();
             String requete = "select idm, libelle, qtte, seuil, categorie from medicament where categorie =?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
-            prepare.setString(2, pCategorie);
+            prepare.setString(1, pCategorie); //par rapport aux ?
             ResultSet stockResultat = prepare.executeQuery();
             while (stockResultat.next()) {
                 int id = stockResultat.getInt(1);
