@@ -43,6 +43,7 @@ public class ServiceDAOTest {
     /**
      * Test of create method, of class ServiceDAO.
      */
+    /**
     @Test
     public void testCreate() {
         System.out.println("create");
@@ -54,7 +55,7 @@ public class ServiceDAOTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+ */
     /**
      * Test of find method, of class ServiceDAO.
      */
@@ -74,6 +75,7 @@ public class ServiceDAOTest {
     /**
      * Test of update method, of class ServiceDAO.
      */
+     /**
     @Test
     public void testUpdate() {
         System.out.println("update");
@@ -85,10 +87,12 @@ public class ServiceDAOTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+ */
     /**
      * Test of delete method, of class ServiceDAO.
+     *
      */
+    /**
     @Test
     public void testDelete() {
         System.out.println("delete");
@@ -101,6 +105,7 @@ public class ServiceDAOTest {
         fail("The test case is a prototype.");
     }
 
+    */
     /**
      * Test of findAll method, of class ServiceDAO.
      */
@@ -111,14 +116,14 @@ public class ServiceDAOTest {
         ServiceDAO instance = new ServiceDAO();
         ArrayList<Service> expResult = new ArrayList<>();
         expResult.add(new Service(1, "Administration"));
-        expResult.add(new Service(2, "Phamarcien"));    
+        expResult.add(new Service(2, "Phamarcien"));
         expResult.add(new Service(4, "radiologie"));
         expResult.add(new Service(5, "médécine générale"));
         expResult.add(new Service(3, "chirurgie"));
         ArrayList<Service> result = instance.findAll();
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
         // TODO review the generated test code and remove the default call to fail.
-     //   fail("The test case is a prototype.");
+        //   fail("The test case is a prototype.");
     }
 
     /**
