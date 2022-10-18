@@ -120,11 +120,10 @@ public class DemandeDAOTest {
     @Test
     public void testAfficherDemandeParService() {
         System.out.println("AfficherDemandeParService");
-        int idService = 5;
+        int idService = 2;
         DemandeDAO instance = new DemandeDAO();
         ArrayList<Demande> expResult = new ArrayList<>();
-        expResult.add(new Demande(2,5,5,50));
-        expResult.add(new Demande(1,3,6,11));
+        expResult.add(new Demande(2,2,5,50));
         ArrayList<Demande> result = instance.AfficherDemandeParService(idService);
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
         // TODO review the generated test code and remove the default call to fail.

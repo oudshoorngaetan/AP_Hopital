@@ -113,17 +113,16 @@ public class MedicamentDAOTest {
         System.out.println("findAll");
         MedicamentDAO instance = new MedicamentDAO();
         ArrayList<Medicament> expResult = new ArrayList<>();
-        expResult.add(new Medicament(6,	"Lisopaïne",653,200,"Antalgique"));
-        expResult.add(new Medicament(7,"Morphine",326,200,"Antalgique"));
         expResult.add(new Medicament(8,"Codéïne",284,200,"Antalgique"));
         expResult.add(new Medicament(10,"Compresse",252,200,"Matériel Médical"));
         expResult.add(new Medicament(9,"Tramadol",311,400,"Antalgique"));
-        expResult.add(new Medicament(5,	"Spasfon",360,200,"Antalgique"));
         expResult.add(new Medicament(3,"Smecta",1300,200,"Antalgique"));
         expResult.add(new Medicament(2,"Xanax",670,200,"Psychiatrie"));
-        expResult.add(new Medicament(12,"Doxycycline",80,50,"Antibiotique"));
-        expResult.add(new Medicament(1,"Bandage",300,200,"Matériel Médical"));
+        expResult.add(new Medicament(7,"Morphine",326,200,"Antalgique"));
+        expResult.add(new Medicament(5,	"Spasfon",360,200,"Antalgique"));
+        expResult.add(new Medicament(6,	"Lisopaïne",653,200,"Antalgique"));
         expResult.add(new Medicament(4,"Ventoline",500,200,"Pneumologie"));
+        expResult.add(new Medicament(1,"Bandage",300,200,"Matériel Médical"));
         
         ArrayList<Medicament> result = instance.findAll();
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
@@ -137,8 +136,8 @@ public class MedicamentDAOTest {
     @Test
     public void testDonnerUnStock() {
         System.out.println("donnerUnStock");
-        int idM = 1;
-        Medicament expResult = new Medicament(1,"Bandage",300,200,"Matériel Médical");
+        int idM = 2;
+        Medicament expResult = new Medicament(2,"Xanax",670,200,"Psychiatrie");
         Medicament result = MedicamentDAO.donnerUnStock(idM);
         assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
@@ -202,18 +201,16 @@ public class MedicamentDAOTest {
     public void testListerMedicament() {
         System.out.println("listerMedicament");
         ArrayList<Medicament> expResult = new ArrayList<>();
-        expResult.add(new Medicament(6,	"Lisopaïne",653,200,"Antalgique"));
-        expResult.add(new Medicament(7,"Morphine",326,200,"Antalgique"));
         expResult.add(new Medicament(8,"Codéïne",284,200,"Antalgique"));
         expResult.add(new Medicament(10,"Compresse",252,200,"Matériel Médical"));
         expResult.add(new Medicament(9,"Tramadol",311,400,"Antalgique"));
-        expResult.add(new Medicament(5,	"Spasfon",360,200,"Antalgique"));
         expResult.add(new Medicament(3,"Smecta",1300,200,"Antalgique"));
         expResult.add(new Medicament(2,"Xanax",670,200,"Psychiatrie"));
-        expResult.add(new Medicament(12,"Doxycycline",80,50,"Antibiotique"));
-        expResult.add(new Medicament(1,"Bandage",300,200,"Matériel Médical"));
+        expResult.add(new Medicament(7,"Morphine",326,200,"Antalgique"));
+        expResult.add(new Medicament(5,	"Spasfon",360,200,"Antalgique"));
+        expResult.add(new Medicament(6,	"Lisopaïne",653,200,"Antalgique"));
         expResult.add(new Medicament(4,"Ventoline",500,200,"Pneumologie"));
-        
+        expResult.add(new Medicament(1,"Bandage",300,200,"Matériel Médical"));
         ArrayList<Medicament> result = MedicamentDAO.listerMedicament();
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
         // TODO review the generated test code and remove the default call to fail.
@@ -259,7 +256,7 @@ public class MedicamentDAOTest {
     @Test
     public void testDerniereid() {
         System.out.println("derniereid");
-        int expResult = 12;
+        int expResult = 10;
         int result = MedicamentDAO.derniereid();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
