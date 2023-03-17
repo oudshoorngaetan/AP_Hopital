@@ -3,17 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/home/sio2022/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/IHM/AjouterUtilisateur.java</file>
-            <file>file:/home/sio2022/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/metiers/Utilisateur.java</file>
-            <file>file:/home/sio2022/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/IHM/Authentification.java</file>
-            <file>file:/home/sio2022/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/test/ppe2022_pharmacie/pkgDAO/ServiceDAOTest.java</file>
-            <file>file:/home/sio2022/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/test/ppe2022_pharmacie/pkgDAO/UtilisateurDAOTest.java</file>
-=======
-            <file>file:/home/sio2022/Documents/AP_Hopital/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/IHM/Authentification.java</file>
-            <file>file:/home/sio2022/Documents/AP_Hopital/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/pkgDAO/DAO.java</file>
-            <file>file:/home/sio2022/Documents/AP_Hopital/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/IHM/AjouterUtilisateur.java</file>
->>>>>>> 66810ad14a5a14c6b0bbd082b7c38c0fb7579ae4
+            <file>file:/home/sio2022/Documents/AP_Hopital/mission-java/stock-pharmacie/PPE2022_Pharmacie/src/ppe2022_pharmacie/IHM/AfficherTousLesStock.java</file>
         </group>
     </open-files>
 </project-private>

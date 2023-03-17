@@ -543,7 +543,7 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
 
     private void btnDeconnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeconnexionMouseClicked
         new Authentification().setVisible(true);
-        //dispose();
+        dispose();
     }//GEN-LAST:event_btnDeconnexionMouseClicked
 
     private void btnDeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeconnexionActionPerformed

@@ -108,6 +108,7 @@ public class DemandeDAOTest {
         ArrayList<Demande> expResult = new ArrayList<>();
         expResult.add(new Demande(2,2,5,50));
         expResult.add(new Demande(1,3,6,11));
+        expResult.add(new Demande(3,4,8,2));
         ArrayList<Demande> result = instance.findAll();
         assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
