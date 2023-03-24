@@ -202,7 +202,7 @@ public class AfficherDemandes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFermerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFermerMouseClicked
-        new AfficherTousLesStock(unUser).setVisible(true);
+        //new AfficherTousLesStock(unUser).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnFermerMouseClicked
 
