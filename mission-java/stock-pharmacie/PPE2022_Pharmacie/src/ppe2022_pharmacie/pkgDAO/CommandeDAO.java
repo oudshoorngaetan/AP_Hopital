@@ -4,10 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.Connection;
 import ppe2022_pharmacie.metiers.Commandes;
 import static ppe2022_pharmacie.pkgDAO.DAO.pdo;
 
-public class CommandeDAO extends DAO<Commandes>{
+public class CommandeDAO extends DAO<Commandes> {
+    Connection leSingleton = Singleton.getInstance().getCo();
     // Create
     // Créer dans la table commande une commande
     // Paramètre :
@@ -15,12 +17,13 @@ public class CommandeDAO extends DAO<Commandes>{
     // Retour :
     // true si la commande est ajoutée avec succès
     // false sinon
+
     @Override
     public Boolean create(Commandes uneCommande) {
         boolean result = false;
-        if (pdo == null) {
+        /*if (pdo == null) {
             Connection();
-        }
+        }*/
         int id = uneCommande.getIdc();
         String fournisseur = uneCommande.getFournisseur();
         String medicament = uneCommande.getMedicament();
@@ -28,7 +31,7 @@ public class CommandeDAO extends DAO<Commandes>{
         String requete = "Insert Into commandes(idc,fournisseur, medicament, qtte) values (?,?,?,?)";
 
         try {
-            PreparedStatement prepare = pdo.prepareStatement(requete);
+            PreparedStatement prepare = leSingleton.prepareStatement(requete);
             prepare.setInt(1, id);
             prepare.setString(2, fournisseur);
             prepare.setString(3, medicament);
@@ -50,13 +53,10 @@ public class CommandeDAO extends DAO<Commandes>{
     // un objet Commandes (null si aucune commande trouvée)
     @Override
     public Commandes find(int pId) {
-        if (pdo == null) {
-            Connection();
-        }
         Commandes uneCommande = null;
         String requete = "Select fournisseur,medicament,qtte From commandes Where idc=?";
         try {
-            PreparedStatement prepare = pdo.prepareStatement(requete);
+            PreparedStatement prepare = leSingleton.prepareStatement(requete);
             prepare.setInt(1, pId);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
@@ -81,10 +81,9 @@ public class CommandeDAO extends DAO<Commandes>{
     @Override
     public Boolean update(Commandes uneCommande) {
         boolean result = false;
-        if (pdo == null) {
+        /*if (pdo == null) {
             Connection();
-        }
-        
+        }*/
         int id = uneCommande.getIdc();
         String fournisseur = uneCommande.getFournisseur();
         String medicament = uneCommande.getMedicament();
@@ -92,7 +91,7 @@ public class CommandeDAO extends DAO<Commandes>{
         String requete = "Update commandes Set fournisseur=?,medicament=?,qtte=? Where idc=?";
 
         try {
-            PreparedStatement prepare = pdo.prepareStatement(requete);
+            PreparedStatement prepare = leSingleton.prepareStatement(requete);
             prepare.setString(1, fournisseur);
             prepare.setString(2, medicament);
             prepare.setInt(3, qtte);
@@ -104,7 +103,7 @@ public class CommandeDAO extends DAO<Commandes>{
         }
         return result;
     }
-    
+
     // Delete
     // Supprime une commande de la bdd
     // Paramètre :
@@ -113,22 +112,22 @@ public class CommandeDAO extends DAO<Commandes>{
     // true si la commande est supprimée avec succès
     // false sinon
     @Override
-    public Boolean delete(Commandes uneCommande){
+    public Boolean delete(Commandes uneCommande) {
         boolean result = false;
-        if (pdo == null) {
+        /*if (pdo == null) {
             Connection();
-        }
+        }*/
         int id = uneCommande.getIdc();
         String requete = "Delete From commandes where idc=?";
         try {
-            PreparedStatement prepare = pdo.prepareStatement(requete);
+            PreparedStatement prepare = leSingleton.prepareStatement(requete);
             prepare.setInt(1, id);
             prepare.executeUpdate();
             result = true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         return result;
     }
 
@@ -142,12 +141,12 @@ public class CommandeDAO extends DAO<Commandes>{
         // meme chose que la methodes donnerToutesLesCommandes()
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     // Donne toutes les commandes de la table commande
     // Paramètre : Aucun
     // Retour : 
     // ArrayList de commandes où on obtient tous les objets commandes de la table commandes
-    public  static ArrayList<Commandes> donnerToutesLesCommandes() {
+    public static ArrayList<Commandes> donnerToutesLesCommandes() {
         if (pdo == null) {
             Connection();
         }
@@ -173,7 +172,7 @@ public class CommandeDAO extends DAO<Commandes>{
         }
         return lesCommandes;
     }
-    
+
     // Ajoute une commande dans la table commandes
     // Paramètres :
     // String fournisseur : Le fournisseur des médicaments à ajouter dans le stock
@@ -205,7 +204,7 @@ public class CommandeDAO extends DAO<Commandes>{
         }
         return result;
     }
-    
+
     // Récupère tous les fournisseurs de la table fournisseur
     // Paramètre : Aucun
     // Retour :
